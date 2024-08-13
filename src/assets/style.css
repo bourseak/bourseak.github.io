@@ -1,0 +1,32 @@
+.interface {
+    background: #313131;
+    color: #ecf0f1;
+}
+
+.my-border {
+    border: 0.5px solid #1abc9c;
+    border-radius: 7px;
+}
+
+.my-btn:hover {
+    color: #ecf0f1;
+    background: #1abc9c;
+}
+
+.centered-container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.my-input {
+    border: 0px solid #1abc9c;
+    border-bottom-width: 0.5px;
+}
+
+.my-input:focus, .my-input:active {
+    border-bottom-color: #af7ac5;
+    border-bottom-width: 0.5px;
+    border-bottom-style: solid;
+    outline: none;
+}
