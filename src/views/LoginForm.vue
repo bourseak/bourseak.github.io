@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div dir="rtl" class="my-border row p-5 w-25">
+  <div dir="rtl" class="my-border row p-5 col-5 col-lg-3 centered-container">
     <input
       class="my-input interface m-2 p-3"
       type="text"
@@ -13,7 +13,7 @@
       placeholder="رمز عبور"
     />
     <input
-      class="m-2 p-3 w-25 interface m-1 my-border my-btn"
+      class="p-3 w-100 interface m-1 my-border my-btn mt-4"
       type="submit"
       value="ورود"
     />

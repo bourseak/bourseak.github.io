@@ -2,7 +2,7 @@
   <div style="background-color: #313131; height: 100vh">
     <NavbarCmp />
 
-    <div class="container">
+    <div class="container mpage">
       <router-view />
     </div>
   </div>
@@ -14,6 +14,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+
+.mpage {
+  margin-top: 1%;
 }
 </style>
 

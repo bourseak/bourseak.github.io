@@ -14,9 +14,9 @@
 }
 
 .centered-container {
-    display: grid;
-    place-items: center;
-    height: 100vh;
+    position: absolute;
+    top: 30%;
+    left: 35%;
 }
 
 .my-input {
