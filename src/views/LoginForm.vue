@@ -3,7 +3,26 @@
     dir="rtl"
     class="my-border row p-5 col-5 col-lg-3 centered-container mt-5"
   >
-    <h3 class="w-color">ورود به حساب</h3>
+    <div>
+      <h3 class="w-color">ورود به حساب</h3>
+
+      <!-- loding...-->
+      <div hidden>
+        <div class="spinner-grow p-color" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow g-color" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow b-color" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow o-color" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+
     <input
       class="my-input interface m-2 p-3"
       type="text"
