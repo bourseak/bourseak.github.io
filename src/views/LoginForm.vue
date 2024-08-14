@@ -37,6 +37,12 @@
   </div>
 </template>
 
-<script setup></script>
+<script>
+export default {
+  data() {},
+  methods: {},
+  mounted() {},
+};
+</script>
 
 <style scoped></style>
