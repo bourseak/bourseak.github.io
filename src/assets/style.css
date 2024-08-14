@@ -42,3 +42,14 @@
     color: #1abc9c;
 }
 
+.b-color {
+    color: #5dade2;
+}
+
+.y-color-hover:hover {
+    color: #d4ac0d;
+}
+
+.o-color {
+    color: #dc7633;
+}

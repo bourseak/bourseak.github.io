@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="#">My App</a>
+      <router-link class="navbar-brand" to="/">بورسیک</router-link>
       <button
         class="navbar-toggler"
         type="button"

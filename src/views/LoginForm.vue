@@ -19,6 +19,21 @@
       type="submit"
       value="ورود"
     />
+    <div class="row mt-5 p-1">
+      <router-link
+        to="/singup"
+        class="b-color y-color-hover col-6"
+        style="text-decoration: none"
+        >اکانت ندارید؟ ثبت‌نام کنید</router-link
+      >
+
+      <router-link
+        to="/singup"
+        class="o-color y-color-hover col-6"
+        style="text-decoration: none"
+        >فراموشی رمز</router-link
+      >
+    </div>
   </div>
 </template>
 

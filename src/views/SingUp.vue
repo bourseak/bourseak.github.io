@@ -30,6 +30,12 @@
       type="submit"
       value="ورود"
     />
+    <router-link
+      to="/login"
+      class="mt-5 b-color y-color-hover"
+      style="text-decoration: none"
+      >اکانت دارید؟ وارد شوید</router-link
+    >
   </div>
 </template>
 
