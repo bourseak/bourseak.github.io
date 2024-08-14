@@ -61,7 +61,7 @@
     <input
       class="p-3 w-100 interface m-1 my-border my-btn mt-5"
       type="submit"
-      value="ورود"
+      value="ایجاد حساب"
       @click="singup_data"
     />
     <router-link
