@@ -47,6 +47,7 @@
       class="p-3 w-100 interface m-1 my-border my-btn mt-5"
       type="submit"
       value="ورود"
+      @click="singup_data"
     />
     <router-link
       to="/login"
@@ -60,4 +61,51 @@
 <style scoped></style>
 
 <script>
+import Swal from "sweetalert2";
+
+export default {
+  data() {
+    return {
+      phone: null,
+      name: null,
+      last_name: null,
+      password: null,
+      re_password: null,
+    };
+  },
+  methods: {
+    check_data() {
+      if (!this.phone) {
+        Swal.fire("خطا", "شماره اشتباه وارد شده است!", "error");
+        return false;
+      }
+
+      if (!this.name) {
+        Swal.fire("خطا", "نام اشتباه وارد شده است!", "error");
+        return false;
+      }
+
+      if (!this.last_name) {
+        Swal.fire("خطا", "نام خانودادگی اشتباه وارد شده است!", "error");
+        return false;
+      }
+
+      if (!this.password && this.password.length < 8) {
+        Swal.fire("خطا", "رمز عبور اشتباه وارد شده است!", "error");
+        return false;
+      }
+
+      if (this.re_password !== this.password) {
+        Swal.fire("خطا", "تکرار رمز عبور اشتباه است!", "error");
+        return false;
+      }
+    },
+    singup_data() {
+      if (this.check_data()) {
+        Swal.fire("hi");
+      }
+    },
+  },
+  mounted() {},
+};
 </script>

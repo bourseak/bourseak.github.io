@@ -4,6 +4,8 @@ import router from "./router";
 import "./assets/style.css";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import VueSweetalert2 from "vue-sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 
 function get_cookie(key) {
   const cookies = document.cookie.split(";");
@@ -43,6 +45,7 @@ app.config.globalProperties.$get_cookie = get_cookie;
 app.config.globalProperties.$set_cookie = set_cookie;
 app.config.globalProperties.$host = "http://127.0.0.1/";
 app.use(router);
+app.use(VueSweetalert2);
 app.mount("#app");
 
 // createApp(App).use(router).mount("#app");
