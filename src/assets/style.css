@@ -5,7 +5,7 @@
 
 .my-border {
     border: 0.5px solid #1abc9c;
-    border-radius: 7px;
+    border-radius: 13px;
 }
 
 .my-btn:hover {
@@ -41,3 +41,4 @@
 .g-color {
     color: #1abc9c;
 }
+
