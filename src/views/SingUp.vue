@@ -7,7 +7,7 @@
       <h3 class="w-color">ساخت حساب</h3>
 
       <!-- loding...-->
-      <div hidden>
+      <div v-if="show_loading">
         <div class="spinner-grow p-color" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
@@ -22,27 +22,42 @@
         </div>
       </div>
     </div>
+
+    <input
+      class="my-input interface m-2 p-3 number-to-text"
+      type="number"
+      placeholder="شماره مبایل"
+      v-model="phone"
+    />
+
     <input
       class="my-input interface m-2 p-3"
       type="text"
-      placeholder="شماره مبایل"
+      placeholder="نام"
+      v-model="name"
     />
-    <input class="my-input interface m-2 p-3" type="text" placeholder="نام" />
+
     <input
       class="my-input interface m-2 p-3"
       type="text"
       placeholder="نام خانوادگی"
+      v-model="last_name"
     />
+
     <input
       class="my-input interface m-2 p-3"
       type="password"
       placeholder="رمز عبور"
+      v-model="password"
     />
+
     <input
       class="my-input interface m-2 p-3"
       type="password"
       placeholder="تکرار رمز عبور"
+      v-model="re_password"
     />
+
     <input
       class="p-3 w-100 interface m-1 my-border my-btn mt-5"
       type="submit"
@@ -71,6 +86,7 @@ export default {
       last_name: null,
       password: null,
       re_password: null,
+      show_loading: false,
     };
   },
   methods: {
@@ -90,7 +106,7 @@ export default {
         return false;
       }
 
-      if (!this.password && this.password.length < 8) {
+      if (!this.password || this.password.length < 8) {
         Swal.fire("خطا", "رمز عبور اشتباه وارد شده است!", "error");
         return false;
       }
@@ -99,10 +115,11 @@ export default {
         Swal.fire("خطا", "تکرار رمز عبور اشتباه است!", "error");
         return false;
       }
+      return true;
     },
     singup_data() {
       if (this.check_data()) {
-        Swal.fire("hi");
+        this.show_loading = true;
       }
     },
   },
