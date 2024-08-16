@@ -1,8 +1,8 @@
 <template>
-  <div style="background-color: #313131; height: 100vh">
+  <div style="height: 100%">
     <NavbarCmp />
 
-    <div class="container mpage">
+    <div class="container">
       <router-view />
     </div>
   </div>
@@ -14,6 +14,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background: #313131;
 }
 
 .mpage {

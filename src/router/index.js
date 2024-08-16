@@ -31,6 +31,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/SingUp.vue"),
   },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/DashboardView.vue"),
+  },
 ];
 
 const router = createRouter({
