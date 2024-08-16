@@ -2,11 +2,11 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import "./assets/style.css";
+import "./assets/icono.min.css";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
-import axios from "axios";
 
 function get_cookie(key) {
   const cookies = document.cookie.split(";");
@@ -44,7 +44,7 @@ function set_cookie(name, value, expires, path, domain, secure) {
 const app = createApp(App);
 app.config.globalProperties.$get_cookie = get_cookie;
 app.config.globalProperties.$set_cookie = set_cookie;
-app.config.globalProperties.$host = "http://127.0.0.1/";
+app.config.globalProperties.$host = "http://127.0.0.1:8000";
 app.use(router);
 app.use(VueSweetalert2);
 app.mount("#app");
