@@ -1,7 +1,7 @@
 <template>
   <div
     dir="rtl"
-    class="my-border row p-5 col-5 col-lg-3 centered-container mt-5"
+    class="my-border row p-5 col-5 col-lg-3 centered-container mt-5 darker_bg"
   >
     <div>
       <h3 class="w-color">ساخت حساب</h3>
