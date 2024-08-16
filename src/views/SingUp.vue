@@ -27,28 +27,35 @@
       class="my-input interface m-2 p-3 number-to-text"
       type="number"
       placeholder="شماره مبایل"
-      v-model="phone"
+      v-model="user.phone"
+    />
+
+    <input
+      class="my-input interface m-2 p-3"
+      type="email"
+      placeholder="ایمیل"
+      v-model="user.email"
     />
 
     <input
       class="my-input interface m-2 p-3"
       type="text"
       placeholder="نام"
-      v-model="name"
+      v-model="user.name"
     />
 
     <input
       class="my-input interface m-2 p-3"
       type="text"
       placeholder="نام خانوادگی"
-      v-model="last_name"
+      v-model="user.last_name"
     />
 
     <input
       class="my-input interface m-2 p-3"
       type="password"
       placeholder="رمز عبور"
-      v-model="password"
+      v-model="user.password"
     />
 
     <input
@@ -77,49 +84,60 @@
 
 <script>
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default {
   data() {
     return {
-      phone: null,
-      name: null,
-      last_name: null,
-      password: null,
+      user: {
+        phone: null,
+        name: null,
+        email: null,
+        last_name: null,
+        password: null,
+      },
       re_password: null,
       show_loading: false,
     };
   },
   methods: {
     check_data() {
-      if (!this.phone) {
-        Swal.fire("خطا", "شماره اشتباه وارد شده است!", "error");
+      if (!this.user.phone) {
+        Swal.fire("خطا", "شماره وارد نشده است!", "error");
         return false;
       }
 
-      if (!this.name) {
-        Swal.fire("خطا", "نام اشتباه وارد شده است!", "error");
+      if (!this.user.name) {
+        Swal.fire("خطا", "نام وارد نشده است!", "error");
         return false;
       }
 
-      if (!this.last_name) {
-        Swal.fire("خطا", "نام خانودادگی اشتباه وارد شده است!", "error");
+      if (!this.user.last_name) {
+        Swal.fire("خطا", "نام خانودادگی وارد نشده است!", "error");
         return false;
       }
 
-      if (!this.password || this.password.length < 8) {
-        Swal.fire("خطا", "رمز عبور اشتباه وارد شده است!", "error");
+      if (!this.user.password || this.user.password.length < 8) {
+        Swal.fire("خطا", "رمز عبور باید بیش از هشت کاراکتر باشد!", "error");
         return false;
       }
 
-      if (this.re_password !== this.password) {
-        Swal.fire("خطا", "تکرار رمز عبور اشتباه است!", "error");
+      if (this.re_password !== this.user.password) {
+        Swal.fire("خطا", "تکرار رمز عبور یکسان نیست!", "error");
         return false;
       }
+
+      if (!this.user.email) {
+        Swal.fire("خطا", "ایمیل وارد نشده است", "error");
+        return false;
+      }
+
       return true;
     },
     singup_data() {
       if (this.check_data()) {
         this.show_loading = true;
+        console.log(this.$host);
       }
     },
   },
