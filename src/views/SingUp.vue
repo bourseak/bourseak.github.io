@@ -41,7 +41,7 @@
       class="my-input interface m-2 p-3"
       type="text"
       placeholder="نام"
-      v-model="user.name"
+      v-model="user.first_name"
     />
 
     <input
@@ -91,7 +91,7 @@ export default {
     return {
       user: {
         phone: null,
-        name: null,
+        first_name: null,
         email: null,
         last_name: null,
         password: null,
@@ -107,7 +107,7 @@ export default {
         return false;
       }
 
-      if (!this.user.name) {
+      if (!this.user.first_name) {
         Swal.fire("خطا", "نام وارد نشده است!", "error");
         return false;
       }
@@ -137,7 +137,19 @@ export default {
     singup_data() {
       if (this.check_data()) {
         this.show_loading = true;
-        console.log(this.$host);
+        axios
+          .post(`${this.$host}/api/user/`, this.user)
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => {
+            if (err.response.data.phone) {
+              Swal.fire("خطا", err.response.data.phone[0], "error");
+            }
+            if (err.response.data.email) {
+              Swal.fire("خطا", err.response.data.email[0], "error");
+            }
+          });
       }
     },
   },
