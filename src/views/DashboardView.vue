@@ -1,0 +1,61 @@
+<template>
+  <div class="row" style="height: 50px">
+    <div class="my-border col-10 col-xl-12 m-4 mt-5 row p-1">
+      <button class="my-btn col-1 interface m-1 my-border">
+        <span class="icono-plus"></span>
+      </button>
+
+      <button class="my-btn col-1 interface m-1 my-border">
+        <span class="icono-search"></span>
+      </button>
+    </div>
+
+    <div
+      class="my-border col-10 col-xl-12 m-4 mt-1 p-5 darker_bg cardy-container mb-5"
+    >
+      <i v-if="!onwatch" style="color: #95a5a6">
+        <span class="icono-exclamationCircle" style="color: #af7ac5"></span>
+        هنوز هیچ سهامی به واچ لیست اضافه نکرده‌اید
+      </i>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.cardy-container {
+  overflow-y: scroll;
+  height: 800px;
+  max-height: 800px;
+  min-height: 800px;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #313131;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 13px;
+  background-color: #505050;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #606060;
+}
+</style>
+
+<script>
+export default {
+  data() {
+    return {
+      onwatch: null,
+    };
+  },
+  methods: {},
+  mounted() {},
+};
+</script>
