@@ -63,13 +63,27 @@
 </style>
 
 <script>
+import Swal from "sweetalert2";
 export default {
   data() {
     return {
       onwatch: null,
     };
   },
-  methods: {},
-  mounted() {},
+  methods: {
+    get_watchlist() {
+      if (!this.$is_logedin()) {
+        Swal.fire({
+          title: "خطا",
+          text: "شما باید اول وارد شوید!",
+          icon: "warning",
+        });
+        this.$router.push("/login");
+      }
+    },
+  },
+  mounted() {
+    this.get_watchlist();
+  },
 };
 </script>
