@@ -1,11 +1,11 @@
 <template>
   <div class="row" style="height: 50px">
     <div class="my-border col-10 col-xl-12 m-4 mt-5 row p-1">
-      <button class="my-btn col-1 interface m-1 my-border">
+      <button class="my-btn interface m-1 btn-bg">
         <span class="icono-plus"></span>
       </button>
 
-      <button class="my-btn col-1 interface m-1 my-border">
+      <button class="my-btn interface m-1 btn-bg">
         <span class="icono-search"></span>
       </button>
     </div>
@@ -45,6 +45,20 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #606060;
+  border-radius: 13px;
+}
+
+.btn-bg {
+  background-color: #404040;
+  width: 5%;
+  border: none;
+  color: #1abc9c;
+  border-radius: 13px;
+}
+
+.btn-bg:hover {
+  background-color: #353535;
+  color: #af7ac5;
 }
 </style>
 
