@@ -17,6 +17,7 @@
         <span class="icono-exclamationCircle" style="color: #af7ac5"></span>
         هنوز هیچ سهامی به واچ لیست اضافه نکرده‌اید
       </i>
+      <LoadingTag v-if="show_loading" />
     </div>
   </div>
 </template>
@@ -64,10 +65,14 @@
 
 <script>
 import Swal from "sweetalert2";
+import axios from "axios";
+import LoadingTag from "@/components/LoadingTag.vue";
 export default {
+  components: { LoadingTag },
   data() {
     return {
       onwatch: null,
+      show_loading: true,
     };
   },
   methods: {
@@ -80,6 +85,18 @@ export default {
         });
         this.$router.push("/login");
       }
+
+      axios
+        .get(`${this.$host}/api/onwatch/`, this.$config)
+        .then((data) => {
+          if (data.data.length !== 0) {
+            this.onwatch = data.data;
+          }
+          this.show_loading = false;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   mounted() {
