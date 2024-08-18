@@ -53,6 +53,11 @@ app.config.globalProperties.$get_cookie = get_cookie;
 app.config.globalProperties.$set_cookie = set_cookie;
 app.config.globalProperties.$is_logedin = is_logedin;
 app.config.globalProperties.$host = "http://127.0.0.1:8000";
+app.config.globalProperties.$config = {
+  headers: {
+    Authorization: `Bearer ${get_cookie("token")}`,
+  },
+};
 app.use(router);
 app.use(VueSweetalert2);
 app.mount("#app");
