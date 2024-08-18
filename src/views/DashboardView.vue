@@ -1,5 +1,5 @@
 <template>
-  <div class="row" style="height: 50px">
+  <div class="row">
     <div class="my-border col-10 col-xl-12 m-4 mt-5 row p-1">
       <button class="my-btn interface m-1 btn-bg">
         <span class="icono-plus"></span>
@@ -18,6 +18,22 @@
         هنوز هیچ سهامی به واچ لیست اضافه نکرده‌اید
       </i>
       <LoadingTag v-if="show_loading" />
+
+      <div v-if="onwatch" class="row row-cols-1 row-cols-md-4 row-cols-lg-6">
+        <div
+          v-for="watch in onwatch"
+          class="my-card p-3 w-color m-1 mt-3"
+          :key="watch.id"
+        >
+          <p>{{ watch.title }}</p>
+          <hr />
+          <p>{{ watch.stock }}</p>
+          <hr />
+          <p>{{ watch.cond_variable }}</p>
+          <hr />
+          <p>{{ watch.enable }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -60,6 +76,17 @@
 .btn-bg:hover {
   background-color: #353535;
   color: #af7ac5;
+}
+
+.my-card {
+  border: 0.5px solid #af7ac5;
+  background-color: #353535;
+  border-radius: 13px;
+}
+
+hr {
+  background-color: #58d68d;
+  border-color: #58d68d;
 }
 </style>
 
