@@ -41,9 +41,17 @@ function set_cookie(name, value, expires, path, domain, secure) {
   document.cookie = cookieString;
 }
 
+function is_logedin() {
+  if (get_cookie("token")) {
+    return true;
+  }
+  return false;
+}
+
 const app = createApp(App);
 app.config.globalProperties.$get_cookie = get_cookie;
 app.config.globalProperties.$set_cookie = set_cookie;
+app.config.globalProperties.$is_logedin = is_logedin;
 app.config.globalProperties.$host = "http://127.0.0.1:8000";
 app.use(router);
 app.use(VueSweetalert2);
