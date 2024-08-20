@@ -5,9 +5,13 @@
         <span class="icono-plus"></span>
       </button>
 
-      <button class="my-btn interface m-1 btn-bg">
+      <button class="my-btn interface m-1 btn-bg" @click="show_search_bar=!show_search_bar">
         <span class="icono-search"></span>
       </button>
+
+      <div class="col-1" style="align-content: center" v-if="show_search_bar">
+        <input class="input-bg" placeholder="جست و چو در واچ لیست" />
+      </div>
     </div>
 
     <div
@@ -97,6 +101,14 @@ hr {
   background-color: #58d68d;
   border-color: #58d68d;
 }
+
+.input-bg {
+  background-color: #404040;
+  border: none;
+  color: #42b983;
+  border-radius: 13px;
+  text-align: center;
+}
 </style>
 
 <script>
@@ -109,6 +121,7 @@ export default {
     return {
       onwatch: [],
       show_loading: true,
+      show_search_bar: false,
     };
   },
   methods: {
