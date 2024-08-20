@@ -5,19 +5,18 @@
         <span class="icono-plus"></span>
       </button>
 
-      <button
-        class="my-btn interface m-1 btn-bg"
-        @click="show_search_bar = !show_search_bar"
-      >
+      <button class="my-btn interface m-1 btn-bg" @click="search_btn">
         <span class="icono-search"></span>
       </button>
 
-      <div class="col-1" style="align-content: center" v-if="show_search_bar">
+      <div class="col-1" style="align-content: center">
         <input
           @input="search"
           class="input-bg"
           placeholder="جست و چو در واچ لیست"
           v-model="search_text"
+          id="searchbar"
+          hidden
         />
       </div>
     </div>
@@ -190,6 +189,12 @@ export default {
           }
         }
       }
+    },
+
+    search_btn() {
+      document.getElementById("searchbar").hidden = this.show_search_bar;
+      this.show_search_bar = !this.show_search_bar;
+      document.getElementById("searchbar").focus();
     },
   },
   mounted() {
