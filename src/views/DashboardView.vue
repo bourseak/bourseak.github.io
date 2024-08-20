@@ -29,7 +29,15 @@
           <hr />
           <p>{{ watch.stock }}</p>
           <hr />
-          <p>{{ watch.cond_variable }}</p>
+          <p v-if="watch.cond_variable === 'last'">اخرین قیمت</p>
+          <p v-if="watch.cond_variable === 'close'">قیمت بسته شدن</p>
+          <p v-if="watch.cond_variable === 'open'">قیمت باز شدن</p>
+          <p v-if="watch.cond_variable === 'yesterday'">قیمت دیروز</p>
+          <p v-if="watch.cond_variable === 'high'">بیشترین قیمت</p>
+          <p v-if="watch.cond_variable === 'low'">کمترین قیمت</p>
+          <p v-if="watch.cond_variable === 'count'">تعداد</p>
+          <p v-if="watch.cond_variable === 'volume'">حجم</p>
+          <p v-if="watch.cond_variable === 'value'">ارزش</p>
           <hr />
           <p>{{ watch.enable }}</p>
         </div>
