@@ -5,12 +5,20 @@
         <span class="icono-plus"></span>
       </button>
 
-      <button class="my-btn interface m-1 btn-bg" @click="show_search_bar=!show_search_bar">
+      <button
+        class="my-btn interface m-1 btn-bg"
+        @click="show_search_bar = !show_search_bar"
+      >
         <span class="icono-search"></span>
       </button>
 
       <div class="col-1" style="align-content: center" v-if="show_search_bar">
-        <input class="input-bg" placeholder="جست و چو در واچ لیست" />
+        <input
+          @input="search"
+          class="input-bg"
+          placeholder="جست و چو در واچ لیست"
+          v-model="search_text"
+        />
       </div>
     </div>
 
@@ -23,9 +31,12 @@
       </i>
       <LoadingTag v-if="show_loading" />
 
-      <div v-if="onwatch" class="row row-cols-1 row-cols-md-4 row-cols-lg-6">
+      <div
+        v-if="onwatch_list"
+        class="row row-cols-1 row-cols-md-4 row-cols-lg-6"
+      >
         <div
-          v-for="watch in onwatch"
+          v-for="watch in onwatch_list"
           class="my-card p-3 w-color m-1 mt-3"
           :key="watch.id"
         >
@@ -126,6 +137,8 @@ export default {
       onwatch: [],
       show_loading: true,
       show_search_bar: false,
+      search_text: null,
+      onwatch_list: [],
     };
   },
   methods: {
@@ -149,6 +162,7 @@ export default {
                 .then((stock) => {
                   watch.stock = stock.data.symbol;
                   this.onwatch.push(watch);
+                  this.onwatch_list.push(watch);
                 })
                 .catch((err) => {
                   this.show_loading = false;
@@ -162,6 +176,20 @@ export default {
           this.show_loading = false;
           console.log(err);
         });
+    },
+
+    search() {
+      if (this.onwatch.length !== 0) {
+        this.onwatch_list = [];
+        for (let watch of this.onwatch) {
+          if (
+            watch.stock.includes(this.search_text) ||
+            watch.title.includes(this.search_text)
+          ) {
+            this.onwatch_list.push(watch);
+          }
+        }
+      }
     },
   },
   mounted() {
