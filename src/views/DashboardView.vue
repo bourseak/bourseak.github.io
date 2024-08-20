@@ -13,7 +13,7 @@
     <div
       class="my-border col-10 col-xl-12 m-4 mt-1 p-5 darker_bg cardy-container mb-5"
     >
-      <i v-if="!onwatch" style="color: #95a5a6">
+      <i v-if="onwatch.length === 0" style="color: #95a5a6">
         <span class="icono-exclamationCircle" style="color: #af7ac5"></span>
         هنوز هیچ سهامی به واچ لیست اضافه نکرده‌اید
       </i>
@@ -98,7 +98,7 @@ export default {
   components: { LoadingTag },
   data() {
     return {
-      onwatch: null,
+      onwatch: [],
       show_loading: true,
     };
   },
@@ -115,13 +115,25 @@ export default {
 
       axios
         .get(`${this.$host}/api/onwatch/`, this.$config)
-        .then((data) => {
-          if (data.data.length !== 0) {
-            this.onwatch = data.data;
+        .then((watchs) => {
+          if (watchs.data.length !== 0) {
+            for (const watch of watchs.data) {
+              axios
+                .get(`${this.$host}/api/stock/${watch.stock}/`)
+                .then((stock) => {
+                  watch.stock = stock.data.symbol;
+                  this.onwatch.push(watch);
+                })
+                .catch((err) => {
+                  this.show_loading = false;
+                  console.log(err);
+                });
+            }
           }
           this.show_loading = false;
         })
         .catch((err) => {
+          this.show_loading = false;
           console.log(err);
         });
     },
