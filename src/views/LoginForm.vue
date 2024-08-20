@@ -90,7 +90,6 @@ export default {
         axios
           .post(`${this.$host}/api/token/`, this.user)
           .then((data) => {
-            console.log(data.data.access);
             this.$set_cookie("token", data.data.access);
             this.$router.push("/dashboard");
           })
