@@ -141,7 +141,8 @@ export default {
           .post(`${this.$host}/api/user/`, this.user)
           .then((data) => {
             this.$set_cookie("token", data.data.token);
-            this.$router.push("dashboard");
+            window.open("/dashboard");
+            // this.$router.push("dashboard");
           })
           .catch((err) => {
             if (err.response.data.phone) {
