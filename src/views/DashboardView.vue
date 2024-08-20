@@ -39,7 +39,8 @@
           <p v-if="watch.cond_variable === 'volume'">حجم</p>
           <p v-if="watch.cond_variable === 'value'">ارزش</p>
           <hr />
-          <p>{{ watch.enable }}</p>
+          <p class="g-color" v-if="watch.enable">فعال</p>
+          <p class="o-color" v-else>غیر فعال</p>
         </div>
       </div>
     </div>
