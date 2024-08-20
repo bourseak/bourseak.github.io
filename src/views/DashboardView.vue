@@ -109,6 +109,10 @@ hr {
   border-radius: 13px;
   text-align: center;
 }
+
+.input-bg:focus {
+  outline: 0.5px #1abc9c solid;
+}
 </style>
 
 <script>
