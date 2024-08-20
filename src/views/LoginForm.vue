@@ -95,6 +95,7 @@ export default {
             // this.$router.push("/dashboard");
           })
           .catch((err) => {
+            this.show_loading = false;
             if (err.response.status === 401) {
               this.show_loading = false;
               Swal.fire("خطا", "کاربری با این اطلاعات یافت نشد!", "error");

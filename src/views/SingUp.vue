@@ -145,6 +145,7 @@ export default {
             // this.$router.push("dashboard");
           })
           .catch((err) => {
+            this.show_loading = false;
             if (err.response.data.phone) {
               Swal.fire("خطا", err.response.data.phone[0], "error");
             }
