@@ -41,6 +41,8 @@
           <option value="count" class="my-option">تعداد</option>
           <option value="volume" class="my-option">حجم</option>
           <option value="value" class="my-option">ارزش</option>
+          <option value="true" class="my-option">فعال</option>
+          <option value="false" class="my-option">غیر فعال</option>
         </select>
       </div>
 
@@ -250,7 +252,10 @@ export default {
       if (this.filter_item !== "all") {
         this.onwatch_list = [];
         for (var watch of this.onwatch) {
-          if (watch.cond_variable === this.filter_item) {
+          if (
+            watch.cond_variable === this.filter_item ||
+            watch.enable.toString() === this.filter_item
+          ) {
             this.onwatch_list.push(watch);
           }
         }
