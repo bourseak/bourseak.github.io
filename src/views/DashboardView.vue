@@ -9,6 +9,39 @@
         <span class="icono-search"></span>
       </button>
 
+      <button
+        class="my-btn interface m-1 btn-bg"
+        @click="
+          show_filters = !show_filters;
+          show_search_bar = true;
+          search_btn();
+        "
+      >
+        <span class="icono-sliders"></span>
+      </button>
+
+      <div
+        class="col-2 input-bg row m-1"
+        style="align-content: center"
+        v-if="show_filters"
+      >
+        <select
+          class="form-select-sm col m-1 my-select"
+          aria-label="Small select example"
+        >
+          <option selected class="my-option">همه</option>
+          <option value="1" class="my-option">آخرین</option>
+          <option value="2" class="my-option">بسته شدن</option>
+          <option value="3" class="my-option">باز شدن</option>
+          <option value="3" class="my-option">دیروز</option>
+          <option value="3" class="my-option">بیشترین</option>
+          <option value="3" class="my-option">کمترین</option>
+          <option value="3" class="my-option">تعداد</option>
+          <option value="3" class="my-option">حجم</option>
+          <option value="3" class="my-option">ارزش</option>
+        </select>
+      </div>
+
       <div class="col-1" style="align-content: center">
         <input
           @input="search"
@@ -123,6 +156,18 @@ hr {
 .input-bg:focus {
   outline: 0.5px #1abc9c solid;
 }
+
+.my-select {
+  background-color: transparent;
+  color: #b3b6b7;
+  outline: none;
+  border: none;
+  border-radius: 13px;
+}
+
+.my-option {
+  background-color: #404040;
+}
 </style>
 
 <script>
@@ -138,6 +183,7 @@ export default {
       show_search_bar: false,
       search_text: null,
       onwatch_list: [],
+      show_filters: false,
     };
   },
   methods: {
