@@ -28,17 +28,19 @@
         <select
           class="form-select-sm col m-1 my-select"
           aria-label="Small select example"
+          v-model="filter_item"
+          @change="filter"
         >
-          <option selected class="my-option">همه</option>
-          <option value="1" class="my-option">آخرین</option>
-          <option value="2" class="my-option">بسته شدن</option>
-          <option value="3" class="my-option">باز شدن</option>
-          <option value="3" class="my-option">دیروز</option>
-          <option value="3" class="my-option">بیشترین</option>
-          <option value="3" class="my-option">کمترین</option>
-          <option value="3" class="my-option">تعداد</option>
-          <option value="3" class="my-option">حجم</option>
-          <option value="3" class="my-option">ارزش</option>
+          <option value="all" selected class="my-option">همه</option>
+          <option value="last" class="my-option">آخرین</option>
+          <option value="close" class="my-option">بسته شدن</option>
+          <option value="open" class="my-option">باز شدن</option>
+          <option value="yesterday" class="my-option">دیروز</option>
+          <option value="high" class="my-option">بیشترین</option>
+          <option value="low" class="my-option">کمترین</option>
+          <option value="count" class="my-option">تعداد</option>
+          <option value="volume" class="my-option">حجم</option>
+          <option value="value" class="my-option">ارزش</option>
         </select>
       </div>
 
@@ -184,6 +186,7 @@ export default {
       search_text: null,
       onwatch_list: [],
       show_filters: false,
+      filter_item: "all",
     };
   },
   methods: {
@@ -241,6 +244,19 @@ export default {
       document.getElementById("searchbar").hidden = this.show_search_bar;
       this.show_search_bar = !this.show_search_bar;
       document.getElementById("searchbar").focus();
+    },
+
+    filter() {
+      if (this.filter_item !== "all") {
+        this.onwatch_list = [];
+        for (var watch of this.onwatch) {
+          if (watch.cond_variable === this.filter_item) {
+            this.onwatch_list.push(watch);
+          }
+        }
+      } else {
+        this.onwatch_list = this.onwatch;
+      }
     },
   },
   mounted() {
