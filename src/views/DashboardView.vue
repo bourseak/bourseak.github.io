@@ -5,6 +5,10 @@
         <span class="icono-plus"></span>
       </button>
 
+      <button class="my-btn interface m-1 btn-bg" @click="refresh">
+        <span class="icono-sync"></span>
+      </button>
+
       <button class="my-btn interface m-1 btn-bg" @click="search_btn">
         <span class="icono-search"></span>
       </button>
@@ -262,6 +266,15 @@ export default {
       } else {
         this.onwatch_list = this.onwatch;
       }
+    },
+
+    refresh() {
+      this.show_loading = true;
+      this.onwatch_list = [];
+      this.onwatch = [];
+      this.get_watchlist();
+      this.filter_item = "all";
+      this.search_text = null;
     },
   },
   mounted() {
