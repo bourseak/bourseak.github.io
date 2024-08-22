@@ -1,9 +1,9 @@
 <template>
   <div class="row">
     <div class="my-border col-10 col-xl-12 m-4 mt-5 row p-1">
-      <button class="my-btn interface m-1 btn-bg">
+      <router-link to="/watch/add" class="my-btn interface m-1 btn-bg">
         <span class="icono-plus"></span>
-      </button>
+      </router-link>
 
       <button class="my-btn interface m-1 btn-bg" @click="refresh">
         <span class="icono-sync"></span>
