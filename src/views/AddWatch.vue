@@ -16,12 +16,17 @@
           <input
             type="text"
             class="interface my-input col-6 col-lg-3 txt-alg-cen"
-            placeholder="نماد"
+            placeholder="جست و جوی نماد"
+            v-model="search_text"
+            @input="search"
           />
         </div>
       </div>
 
-      <div class="row justify-content-center mt-5" v-if="stocks">
+      <div
+        class="row justify-content-center mt-5"
+        v-if="searched_stocks && search_text.trim()"
+      >
         <div
           class="col-5 col-lg-3 row"
           style="
@@ -32,7 +37,7 @@
           "
         >
           <button
-            v-for="stock in stocks"
+            v-for="stock in searched_stocks"
             :key="stock.id"
             class="m-1 col my-btn interface my-border"
           >
@@ -123,6 +128,8 @@ export default {
   data() {
     return {
       stocks: null,
+      searched_stocks: null,
+      search_text: null,
     };
   },
   mounted() {
@@ -136,6 +143,14 @@ export default {
         .catch((err) => {
           Swal.fire("خطلا", `${err}`, "error");
         });
+    },
+    search() {
+      this.searched_stocks = [];
+      for (let stock of this.stocks) {
+        if (stock.symbol.includes(this.search_text.trim())) {
+          this.searched_stocks.push(stock);
+        }
+      }
     },
   },
 };
