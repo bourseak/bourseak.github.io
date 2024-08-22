@@ -5,7 +5,7 @@
         <div class="">
           <input
             type="text"
-            class="interface my-input col-6 col-lg-3"
+            class="interface my-input col-6 col-lg-3 txt-alg-cen"
             placeholder="عنوان واچ"
           />
         </div>
@@ -15,7 +15,7 @@
         <div class="">
           <input
             type="text"
-            class="interface my-input col-6 col-lg-3"
+            class="interface my-input col-6 col-lg-3 txt-alg-cen"
             placeholder="نماد"
           />
         </div>
@@ -23,7 +23,7 @@
 
       <div class="row justify-content-center mt-5" v-if="stocks">
         <div
-          class="col-5 col-lg-2 row"
+          class="col-5 col-lg-3 row"
           style="
             overflow-y: scroll;
             max-height: 100px;
@@ -44,15 +44,15 @@
       <div class="row justify-content-center mt-5">
         <div class="">
           <select class="my-select col-6 col-lg-3">
-            <option>آخرین قیمت</option>
-            <option>قیمت بسته شدن</option>
-            <option>قیمت باز شدن</option>
-            <option>قیمت دیروز</option>
-            <option>بیشترین قیمت</option>
-            <option>کمترین قیمت</option>
-            <option>تعداد</option>
-            <option>حجم</option>
-            <option>ارزش</option>
+            <option class="txt-alg-cen">آخرین قیمت</option>
+            <option class="txt-alg-cen">قیمت بسته شدن</option>
+            <option class="txt-alg-cen">قیمت باز شدن</option>
+            <option class="txt-alg-cen">قیمت دیروز</option>
+            <option class="txt-alg-cen">بیشترین قیمت</option>
+            <option class="txt-alg-cen">کمترین قیمت</option>
+            <option class="txt-alg-cen">تعداد</option>
+            <option class="txt-alg-cen">حجم</option>
+            <option class="txt-alg-cen">ارزش</option>
           </select>
         </div>
       </div>
@@ -60,8 +60,8 @@
       <div class="row justify-content-center mt-5">
         <div class="">
           <select class="my-select col-6 col-lg-3">
-            <option>بزرگ‌تر مساوی</option>
-            <option>کوچک‌تر مساوی</option>
+            <option class="txt-alg-cen">بزرگ‌تر مساوی</option>
+            <option class="txt-alg-cen">کوچک‌تر مساوی</option>
           </select>
         </div>
       </div>
@@ -70,8 +70,9 @@
         <div class="">
           <input
             type="text"
-            class="interface my-input col-6 col-lg-3"
+            class="interface my-input col-6 col-lg-3 txt-alg-cen"
             placeholder="مقدار"
+            dir="ltr"
           />
         </div>
       </div>
@@ -107,6 +108,10 @@
   outline: none;
   border: none;
   height: 130%;
+}
+
+.txt-alg-cen {
+  text-align: center;
 }
 </style>
 
