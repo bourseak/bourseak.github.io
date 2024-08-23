@@ -99,6 +99,8 @@
       </div>
     </div>
 
+    <LoadingTag v-if="show_tsetmc_loading" />
+
     <div
       class="container my-border col-10 col-xl-12 m-4 mt-5 pt-5 pb-5 w-color"
       dir="rtl"
@@ -240,8 +242,10 @@
 <script>
 import axios from "axios";
 import Swal from "sweetalert2";
+import LoadingTag from "@/components/LoadingTag.vue";
 
 export default {
+  components: { LoadingTag },
   data() {
     return {
       stocks: null,
@@ -252,6 +256,7 @@ export default {
         cond: "gr",
       },
       tsetmc_close_price_detail: null,
+      show_tsetmc_loading: false,
     };
   },
   mounted() {
@@ -304,13 +309,17 @@ export default {
     },
 
     get_tsetmc_data(stock) {
+      this.show_tsetmc_loading = true;
       axios
         .get(`${this.$tsetmc_close}/${stock.symbol_id}/`)
         .then((data) => {
           this.tsetmc_close_price_detail = data.data.closingPriceInfo;
+          this.show_tsetmc_loading = false;
         })
         .catch((err) => {
           console.log(err.message);
+          this.show_tsetmc_loading = false;
+          Swal.fire("خطا", `${err.message}`, "error");
         });
     },
   },
