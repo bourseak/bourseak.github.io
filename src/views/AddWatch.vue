@@ -1,100 +1,109 @@
 <template>
-  <div class="container my-border col-10 col-xl-12 m-4 mt-5 p-1" dir="rtl">
-    <div class="mb-5">
-      <div class="row justify-content-center mt-5">
-        <div class="">
-          <input
-            type="text"
-            class="interface my-input col-6 col-lg-3 txt-alg-cen"
-            placeholder="عنوان واچ"
-            v-model="watch.title"
-          />
+  <div>
+    <div class="container my-border col-10 col-xl-12 m-4 mt-5 p-1" dir="rtl">
+      <div class="mb-5">
+        <div class="row justify-content-center mt-5">
+          <div class="">
+            <input
+              type="text"
+              class="interface my-input col-6 col-lg-3 txt-alg-cen"
+              placeholder="عنوان واچ"
+              v-model="watch.title"
+            />
+          </div>
         </div>
-      </div>
 
-      <div class="row justify-content-center mt-5">
-        <div class="">
-          <input
-            type="text"
-            class="interface my-input col-6 col-lg-3 txt-alg-cen"
-            placeholder="جست و جوی نماد"
-            v-model="search_text"
-            @input="search"
-          />
+        <div class="row justify-content-center mt-5">
+          <div class="">
+            <input
+              type="text"
+              class="interface my-input col-6 col-lg-3 txt-alg-cen"
+              placeholder="جست و جوی نماد"
+              v-model="search_text"
+              @input="search"
+            />
+          </div>
         </div>
-      </div>
 
-      <div
-        class="row justify-content-center mt-5"
-        v-if="searched_stocks && search_text.trim()"
-      >
         <div
-          class="col-5 col-lg-3 row"
-          style="
-            overflow-y: scroll;
-            max-height: 100px;
-            overflow-x: hidden;
-            justify-content: center;
-          "
+          class="row justify-content-center mt-5"
+          v-if="searched_stocks && search_text.trim()"
         >
-          <button
-            v-for="stock in searched_stocks"
-            :key="stock.id"
-            class="m-1 col my-btn interface my-border"
-            @click="select_stock(stock)"
-            :id="stock.id"
+          <div
+            class="col-5 col-lg-3 row"
+            style="
+              overflow-y: scroll;
+              max-height: 100px;
+              overflow-x: hidden;
+              justify-content: center;
+            "
           >
-            {{ stock.symbol }}
-          </button>
+            <button
+              v-for="stock in searched_stocks"
+              :key="stock.id"
+              class="m-1 col my-btn interface my-border"
+              @click="select_stock(stock)"
+              :id="stock.id"
+            >
+              {{ stock.symbol }}
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div class="row justify-content-center mt-5">
-        <div class="">
-          <select
-            class="my-select col-6 col-lg-3"
-            v-model="watch.cond_variable"
-          >
-            <option class="txt-alg-cen" value="last">آخرین قیمت</option>
-            <option class="txt-alg-cen" value="close">قیمت بسته شدن</option>
-            <option class="txt-alg-cen" value="open">قیمت باز شدن</option>
-            <option class="txt-alg-cen" value="yesterday">قیمت دیروز</option>
-            <option class="txt-alg-cen" value="high">بیشترین قیمت</option>
-            <option class="txt-alg-cen" value="low">کمترین قیمت</option>
-            <option class="txt-alg-cen" value="count">تعداد</option>
-            <option class="txt-alg-cen" value="volume">حجم</option>
-            <option class="txt-alg-cen" value="value">ارزش</option>
-          </select>
+        <div class="row justify-content-center mt-5">
+          <div class="">
+            <select
+              class="my-select col-6 col-lg-3"
+              v-model="watch.cond_variable"
+            >
+              <option class="txt-alg-cen" value="last">آخرین قیمت</option>
+              <option class="txt-alg-cen" value="close">قیمت بسته شدن</option>
+              <option class="txt-alg-cen" value="open">قیمت باز شدن</option>
+              <option class="txt-alg-cen" value="yesterday">قیمت دیروز</option>
+              <option class="txt-alg-cen" value="high">بیشترین قیمت</option>
+              <option class="txt-alg-cen" value="low">کمترین قیمت</option>
+              <option class="txt-alg-cen" value="count">تعداد</option>
+              <option class="txt-alg-cen" value="volume">حجم</option>
+              <option class="txt-alg-cen" value="value">ارزش</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <div class="row justify-content-center mt-5">
-        <div class="">
-          <select class="my-select col-6 col-lg-3" v-model="watch.cond">
-            <option class="txt-alg-cen" value="gr">بزرگ‌تر مساوی</option>
-            <option class="txt-alg-cen" value="lt">کوچک‌تر مساوی</option>
-          </select>
+        <div class="row justify-content-center mt-5">
+          <div class="">
+            <select class="my-select col-6 col-lg-3" v-model="watch.cond">
+              <option class="txt-alg-cen" value="gr">بزرگ‌تر مساوی</option>
+              <option class="txt-alg-cen" value="lt">کوچک‌تر مساوی</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <div class="row justify-content-center mt-5">
-        <div class="">
-          <input
-            type="number"
-            class="interface my-input col-6 col-lg-3 txt-alg-cen number-to-text"
-            placeholder="مقدار"
-            dir="ltr"
-            v-model="watch.value"
-          />
+        <div class="row justify-content-center mt-5">
+          <div class="">
+            <input
+              type="number"
+              class="interface my-input col-6 col-lg-3 txt-alg-cen number-to-text"
+              placeholder="مقدار"
+              dir="ltr"
+              v-model="watch.value"
+            />
+          </div>
         </div>
+        <input
+          type="submit"
+          class="my-btn interface my-border mt-5 col-6 col-lg-3"
+          style="height: 35px"
+          value="افزودن به واچ لیست"
+          @click="add_watch"
+        />
       </div>
-      <input
-        type="submit"
-        class="my-btn interface my-border mt-5 col-6 col-lg-3"
-        style="height: 35px"
-        value="افزودن به واچ لیست"
-        @click="add_watch"
-      />
+    </div>
+
+    <div
+      class="container my-border col-10 col-xl-12 m-4 mt-5 pt-5 pb-5 w-color"
+      dir="rtl"
+    >
+      <p>this is test</p>
     </div>
   </div>
 </template>
@@ -153,6 +162,7 @@ export default {
         cond_variable: "last",
         cond: "gr",
       },
+      tsetmc: {},
     };
   },
   mounted() {
@@ -184,6 +194,7 @@ export default {
       document
         .getElementById(stock.id.toString())
         .classList.add("selected-btn");
+      this.get_tsetmc_data(stock);
     },
 
     add_watch() {
@@ -200,6 +211,17 @@ export default {
         })
         .catch((err) => {
           Swal.fire("خطلا", `${err}`, "error");
+        });
+    },
+
+    get_tsetmc_data(stock) {
+      axios
+        .get(`${this.$tsetmc_close}/${stock.symbol_id}/`)
+        .then((data) => {
+          this.tsetmc.close_price_detail = data.data.closingPriceInfo;
+        })
+        .catch((err) => {
+          console.log(err.message);
         });
     },
   },

@@ -58,6 +58,8 @@ app.config.globalProperties.$config = {
     Authorization: `Bearer ${get_cookie("token")}`,
   },
 };
+app.config.globalProperties.$tsetmc_close =
+  "https://cdn.tsetmc.com/api/ClosingPrice/GetClosingPriceInfo";
 app.use(router);
 app.use(VueSweetalert2);
 app.mount("#app");
