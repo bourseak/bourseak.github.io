@@ -102,8 +102,87 @@
     <div
       class="container my-border col-10 col-xl-12 m-4 mt-5 pt-5 pb-5 w-color"
       dir="rtl"
+      v-if="tsetmc_close_price_detail"
     >
-      <p>this is test</p>
+      <div>
+        <div class="row justify-content-center">
+          <p class="col-3">آخرین معامله</p>
+          <button
+            class="col-2 my-btn tsetmc-btn interface"
+            @click="watch.value = tsetmc_close_price_detail.pDrCotVal"
+          >
+            {{ tsetmc_close_price_detail.pDrCotVal }}
+          </button>
+        </div>
+        <div class="row justify-content-center m-3">
+          <hr class="col-6" />
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <p class="col-3">قیمت پایانی</p>
+        <button
+          class="col-2 my-btn tsetmc-btn interface"
+          @click="watch.value = tsetmc_close_price_detail.pClosing"
+        >
+          {{ tsetmc_close_price_detail.pClosing }}
+        </button>
+      </div>
+      <div class="row justify-content-center m-3">
+        <hr class="col-6" />
+      </div>
+
+      <div class="row justify-content-center">
+        <p class="col-3">اولین قیمت</p>
+        <button
+          class="col-2 my-btn tsetmc-btn interface"
+          @click="watch.value = tsetmc_close_price_detail.priceFirst"
+        >
+          {{ tsetmc_close_price_detail.priceFirst }}
+        </button>
+      </div>
+      <div class="row justify-content-center m-3">
+        <hr class="col-6" />
+      </div>
+
+      <div class="row justify-content-center">
+        <p class="col-3">قیمت دیروز</p>
+        <button
+          class="col-2 my-btn tsetmc-btn interface"
+          @click="watch.value = tsetmc_close_price_detail.priceYesterday"
+        >
+          {{ tsetmc_close_price_detail.priceYesterday }}
+        </button>
+      </div>
+      <div class="row justify-content-center m-3">
+        <hr class="col-6" />
+      </div>
+
+      <div class="row justify-content-center">
+        <p class="col-3">حجم معاملات</p>
+        <button
+          class="col-2 my-btn tsetmc-btn interface"
+          @click="watch.value = tsetmc_close_price_detail.qTotTran5J"
+        >
+          {{ tsetmc_close_price_detail.qTotTran5J }}
+        </button>
+      </div>
+      <div class="row justify-content-center m-3">
+        <hr class="col-6" />
+      </div>
+
+      <div class="row justify-content-center">
+        <p class="col-3">ارزش معاملات</p>
+        <button
+          class="col-2 my-btn tsetmc-btn interface"
+          @click="watch.value = tsetmc_close_price_detail.qTotCap"
+        >
+          {{ tsetmc_close_price_detail.qTotCap }}
+        </button>
+      </div>
+      <div class="row justify-content-center m-3">
+        <hr class="col-6" />
+      </div>
     </div>
   </div>
 </template>
@@ -146,6 +225,16 @@
   background-color: #404040;
   border-color: #5dade2;
 }
+
+.tsetmc-btn {
+  border: 0.5px solid #af7ac5;
+  border-radius: 13px;
+  color: #ecf0f1;
+}
+
+.tsetmc-btn:hover {
+  background: #af7ac5;
+}
 </style>
 
 <script>
@@ -162,7 +251,7 @@ export default {
         cond_variable: "last",
         cond: "gr",
       },
-      tsetmc: {},
+      tsetmc_close_price_detail: null,
     };
   },
   mounted() {
@@ -218,7 +307,7 @@ export default {
       axios
         .get(`${this.$tsetmc_close}/${stock.symbol_id}/`)
         .then((data) => {
-          this.tsetmc.close_price_detail = data.data.closingPriceInfo;
+          this.tsetmc_close_price_detail = data.data.closingPriceInfo;
         })
         .catch((err) => {
           console.log(err.message);
