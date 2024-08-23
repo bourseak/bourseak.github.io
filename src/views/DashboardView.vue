@@ -65,7 +65,7 @@
     <div
       class="my-border col-10 col-xl-12 m-4 mt-1 p-5 darker_bg cardy-container mb-5"
     >
-      <i v-if="onwatch.length === 0" style="color: #95a5a6">
+      <i v-if="onwatch.length === 0 && !show_loading" style="color: #95a5a6">
         <span class="icono-exclamationCircle" style="color: #af7ac5"></span>
         هنوز هیچ سهامی به واچ لیست اضافه نکرده‌اید
       </i>
