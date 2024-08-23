@@ -89,13 +89,15 @@
             />
           </div>
         </div>
-        <input
+        <button
           type="submit"
-          class="my-btn interface my-border mt-5 col-6 col-lg-3"
+          class="my-btn interface my-border mt-5 col-6 col-lg-3 p-1"
           style="height: 35px"
-          value="افزودن به واچ لیست"
           @click="add_watch"
-        />
+        >
+          <p>افزودن به واچ لیست</p>
+          <LoadingTag class="mt-3" v-if="show_loading_new_watch" />
+        </button>
       </div>
     </div>
 
@@ -257,6 +259,7 @@ export default {
       },
       tsetmc_close_price_detail: null,
       show_tsetmc_loading: false,
+      show_loading_new_watch: false,
     };
   },
   mounted() {
@@ -293,6 +296,7 @@ export default {
 
     add_watch() {
       if (this.check_inputs_not_empty()) {
+        this.show_loading_new_watch = true;
         axios
           .post(`${this.$host}/api/onwatch/`, this.watch, this.$config)
           .then(() => {
@@ -306,6 +310,7 @@ export default {
           })
           .catch((err) => {
             Swal.fire("خطلا", `${err}`, "error");
+            this.show_loading_new_watch = false;
           });
       }
     },
