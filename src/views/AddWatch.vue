@@ -80,8 +80,8 @@
       <div class="row justify-content-center mt-5">
         <div class="">
           <input
-            type="text"
-            class="interface my-input col-6 col-lg-3 txt-alg-cen"
+            type="number"
+            class="interface my-input col-6 col-lg-3 txt-alg-cen number-to-text"
             placeholder="مقدار"
             dir="ltr"
             v-model="watch.value"
