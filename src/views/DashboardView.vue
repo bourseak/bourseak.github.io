@@ -278,6 +278,8 @@ export default {
     },
   },
   mounted() {
+    this.onwatch_list = [];
+    this.onwatch = [];
     this.get_watchlist();
   },
 };
