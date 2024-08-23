@@ -7,6 +7,7 @@
             type="text"
             class="interface my-input col-6 col-lg-3 txt-alg-cen"
             placeholder="عنوان واچ"
+            v-model="watch.title"
           />
         </div>
       </div>
@@ -50,25 +51,28 @@
 
       <div class="row justify-content-center mt-5">
         <div class="">
-          <select class="my-select col-6 col-lg-3">
-            <option class="txt-alg-cen">آخرین قیمت</option>
-            <option class="txt-alg-cen">قیمت بسته شدن</option>
-            <option class="txt-alg-cen">قیمت باز شدن</option>
-            <option class="txt-alg-cen">قیمت دیروز</option>
-            <option class="txt-alg-cen">بیشترین قیمت</option>
-            <option class="txt-alg-cen">کمترین قیمت</option>
-            <option class="txt-alg-cen">تعداد</option>
-            <option class="txt-alg-cen">حجم</option>
-            <option class="txt-alg-cen">ارزش</option>
+          <select
+            class="my-select col-6 col-lg-3"
+            v-model="watch.cond_variable"
+          >
+            <option class="txt-alg-cen" value="last">آخرین قیمت</option>
+            <option class="txt-alg-cen" value="close">قیمت بسته شدن</option>
+            <option class="txt-alg-cen" value="open">قیمت باز شدن</option>
+            <option class="txt-alg-cen" value="yesterday">قیمت دیروز</option>
+            <option class="txt-alg-cen" value="high">بیشترین قیمت</option>
+            <option class="txt-alg-cen" value="low">کمترین قیمت</option>
+            <option class="txt-alg-cen" value="count">تعداد</option>
+            <option class="txt-alg-cen" value="volume">حجم</option>
+            <option class="txt-alg-cen" value="value">ارزش</option>
           </select>
         </div>
       </div>
 
       <div class="row justify-content-center mt-5">
         <div class="">
-          <select class="my-select col-6 col-lg-3">
-            <option class="txt-alg-cen">بزرگ‌تر مساوی</option>
-            <option class="txt-alg-cen">کوچک‌تر مساوی</option>
+          <select class="my-select col-6 col-lg-3" v-model="watch.cond">
+            <option class="txt-alg-cen" value="gr">بزرگ‌تر مساوی</option>
+            <option class="txt-alg-cen" value="lt">کوچک‌تر مساوی</option>
           </select>
         </div>
       </div>
@@ -80,6 +84,7 @@
             class="interface my-input col-6 col-lg-3 txt-alg-cen"
             placeholder="مقدار"
             dir="ltr"
+            v-model="watch.value"
           />
         </div>
       </div>
@@ -143,7 +148,10 @@ export default {
       stocks: null,
       searched_stocks: null,
       search_text: null,
-      watch: {},
+      watch: {
+        cond_variable: "last",
+        cond: "gr",
+      },
     };
   },
   mounted() {
