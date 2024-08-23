@@ -326,7 +326,7 @@ export default {
     },
 
     check_inputs_not_empty() {
-      if (!this.watch.title.trim()) {
+      if (!this.watch.title || !this.watch.title.trim()) {
         Swal.fire("هشدار", "عنوان را وارد کنید!", "warning");
         return false;
       }
