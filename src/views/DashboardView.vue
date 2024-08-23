@@ -73,7 +73,7 @@
 
       <div
         v-if="onwatch_list"
-        class="row row-cols-1 row-cols-md-4 row-cols-lg-6"
+        class="row row-cols-1 row-cols-md-4 row-cols-lg-6 justify-content-center"
       >
         <div
           v-for="watch in onwatch_list"
