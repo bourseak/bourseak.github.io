@@ -292,20 +292,22 @@ export default {
     },
 
     add_watch() {
-      axios
-        .post(`${this.$host}/api/onwatch/`, this.watch, this.$config)
-        .then(() => {
-          Swal.fire({
-            icon: "success",
-            title: "با موفقیت به واچ لیست اضافه شد",
-            showConfirmButton: false,
-            timer: 1000,
+      if (this.check_inputs_not_empty()) {
+        axios
+          .post(`${this.$host}/api/onwatch/`, this.watch, this.$config)
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "با موفقیت به واچ لیست اضافه شد",
+              showConfirmButton: false,
+              timer: 1000,
+            });
+            this.$router.push("/dashboard");
+          })
+          .catch((err) => {
+            Swal.fire("خطلا", `${err}`, "error");
           });
-          this.$router.push("/dashboard");
-        })
-        .catch((err) => {
-          Swal.fire("خطلا", `${err}`, "error");
-        });
+      }
     },
 
     get_tsetmc_data(stock) {
@@ -321,6 +323,22 @@ export default {
           this.show_tsetmc_loading = false;
           Swal.fire("خطا", `${err.message}`, "error");
         });
+    },
+
+    check_inputs_not_empty() {
+      if (!this.watch.title.trim()) {
+        Swal.fire("هشدار", "عنوان را وارد کنید!", "warning");
+        return false;
+      }
+      if (!this.watch.stock) {
+        Swal.fire("هشدار", "یک سهم انتخاب کنید!", "warning");
+        return false;
+      }
+      if (!this.watch.value) {
+        Swal.fire("هشدار", "مقداری برای این شرط انتخاب کنید!", "warning");
+        return false;
+      }
+      return true;
     },
   },
 };
