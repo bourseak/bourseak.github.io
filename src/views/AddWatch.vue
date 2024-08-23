@@ -93,6 +93,7 @@
         class="my-btn interface my-border mt-5 col-6 col-lg-3"
         style="height: 35px"
         value="افزودن به واچ لیست"
+        @click="add_watch"
       />
     </div>
   </div>
@@ -183,6 +184,23 @@ export default {
       document
         .getElementById(stock.id.toString())
         .classList.add("selected-btn");
+    },
+
+    add_watch() {
+      axios
+        .post(`${this.$host}/api/onwatch/`, this.watch, this.$config)
+        .then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "با موفقیت به واچ لیست اضافه شد",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+          this.$router.push("/dashboard");
+        })
+        .catch((err) => {
+          Swal.fire("خطلا", `${err}`, "error");
+        });
     },
   },
 };
