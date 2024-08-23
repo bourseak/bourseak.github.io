@@ -91,7 +91,7 @@ export default {
           .post(`${this.$host}/api/token/`, this.user)
           .then((data) => {
             this.$set_cookie("token", data.data.access);
-            window.open("/dashboard");
+            window.open("/dashboard", "_self");
             // this.$router.push("/dashboard");
           })
           .catch((err) => {
