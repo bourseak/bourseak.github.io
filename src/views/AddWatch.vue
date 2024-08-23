@@ -40,6 +40,8 @@
             v-for="stock in searched_stocks"
             :key="stock.id"
             class="m-1 col my-btn interface my-border"
+            @click="select_stock(stock)"
+            :id="stock.id"
           >
             {{ stock.symbol }}
           </button>
@@ -81,6 +83,12 @@
           />
         </div>
       </div>
+      <input
+        type="submit"
+        class="my-btn interface my-border mt-5 col-6 col-lg-3"
+        style="height: 35px"
+        value="افزودن به واچ لیست"
+      />
     </div>
   </div>
 </template>
@@ -118,6 +126,11 @@
 .txt-alg-cen {
   text-align: center;
 }
+
+.selected-btn {
+  background-color: #404040;
+  border-color: #5dade2;
+}
 </style>
 
 <script>
@@ -130,6 +143,7 @@ export default {
       stocks: null,
       searched_stocks: null,
       search_text: null,
+      watch: {},
     };
   },
   mounted() {
@@ -144,6 +158,7 @@ export default {
           Swal.fire("خطلا", `${err}`, "error");
         });
     },
+
     search() {
       this.searched_stocks = [];
       for (let stock of this.stocks) {
@@ -151,6 +166,15 @@ export default {
           this.searched_stocks.push(stock);
         }
       }
+    },
+
+    select_stock(stock) {
+      this.watch.stock = stock.id;
+      this.searched_stocks = [stock];
+      this.search_text = stock.symbol;
+      document
+        .getElementById(stock.id.toString())
+        .classList.add("selected-btn");
     },
   },
 };
