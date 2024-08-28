@@ -25,7 +25,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link active br-lr" href="#">تنظیمات</a>
+            <a class="nav-link active br-lr" href="/performance">تنظیمات</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="/about">درباره ما</a>
