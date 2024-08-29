@@ -60,6 +60,8 @@ app.config.globalProperties.$config = {
 };
 app.config.globalProperties.$tsetmc_close =
   "https://cdn.tsetmc.com/api/ClosingPrice/GetClosingPriceInfo";
+app.config.globalProperties.$daily_price =
+  "https://cdn.tsetmc.com/api/ClosingPrice/GetClosingPriceDailyList/2400322364771558/12";
 app.use(router);
 app.use(VueSweetalert2);
 app.mount("#app");
