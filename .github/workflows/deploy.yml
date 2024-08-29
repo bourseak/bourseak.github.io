@@ -42,4 +42,4 @@ jobs:
       - name: Push changes to target repository
         run: |
           cd bourseak.github.io
-          git push --force https://shabane:${{ secrets.GITHUB_TOKEN }}@github.com/bourseak/bourseak.github.io.git
+          git push --force https://shabane:${{ secrets.PWD }}@github.com/bourseak/bourseak.github.io.git
