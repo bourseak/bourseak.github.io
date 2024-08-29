@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkbours"]=self["webpackChunkbours"]||[]).push([[355],{9355:function(r,u,n){n.r(u),n.d(u,{default:function(){return f}});var t=n(6768);const s={class:"about m-5 w-color",dir:"rtl"};function c(r,u){return(0,t.uX)(),(0,t.CE)("div",s," این سایت تحت ساختن است، پس اگر به هر اتفاقی وارد این سایت شدین مشکلات رو به خام دستی این برنامه نویس ببخشید (: ")}var e=n(1241);const o={},a=(0,e.A)(o,[["render",c]]);var f=a}}]);
-//# sourceMappingURL=355.a662cf92.js.map
