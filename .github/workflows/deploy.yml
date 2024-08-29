@@ -27,7 +27,7 @@ jobs:
 
       - name: Clone target repository
         run: |
-          git clone https://github.com/shabane/bourseak.github.io.git
+          git clone https://github.com/bourseak/bourseak.github.io.git
           cd bourseak.github.io
           git config --global user.email "m.mohamadshabane@gmail.com"
           git config --global user.name "shabane"
@@ -42,4 +42,4 @@ jobs:
       - name: Push changes to target repository
         run: |
           cd bourseak.github.io.git
-          git push --force https://shabane:${{ secrets.GITHUB_TOKEN }}@github.com/shabane/bourseak.github.io.git
+          git push --force https://shabane:${{ secrets.GITHUB_TOKEN }}@github.com/bourseak/bourseak.github.io.git
