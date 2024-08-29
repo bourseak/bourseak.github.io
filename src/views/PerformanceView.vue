@@ -57,6 +57,7 @@
 <script>
 import UserPerformance from "@/components/UserPerformance.vue";
 import WarningPerformance from "@/components/WarningPerformance.vue";
+import Swal from "sweetalert2";
 
 export default {
   components: { WarningPerformance, UserPerformance },
@@ -77,6 +78,11 @@ export default {
       this.active_tab = element_name;
     },
   },
-  mounted() {},
+  mounted() {
+    if (!this.$is_loggedin) {
+      Swal.fire("خظا", "شما باید اول وارد شوید!", "warning");
+      this.$router.push("/login");
+    }
+  },
 };
 </script>
