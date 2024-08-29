@@ -58,7 +58,10 @@
       </div>
       <hr class="m-5" />
 
-      <button class="my-btn interface my-border w-25 p-2" @click="logout">
+      <button
+        class="my-btn interface my-border p-2 col-10 col-xl-2"
+        @click="logout"
+      >
         خروج از حساب کاربری
       </button>
       <hr class="m-5" />
@@ -123,7 +126,6 @@ export default {
         axios
           .get(`${this.$host}/api/user/`, this.$config)
           .then((data) => {
-            console.log(data.data);
             this.user = data.data;
           })
           .catch((err) => console.log(err));
