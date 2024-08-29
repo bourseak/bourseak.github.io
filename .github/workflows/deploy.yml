@@ -35,7 +35,7 @@ jobs:
       - name: Copy docs to target repository
         run: |
           cp -r ./docs/* bourseak.github.io/
-          cd bourseak.github.io.git
+          cd bourseak.github.io
           git add .
           git commit -m "build!"
 
