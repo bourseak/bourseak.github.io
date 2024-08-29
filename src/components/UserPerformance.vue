@@ -22,7 +22,7 @@
           <label class="col-1">ایمیل</label>
         </div>
 
-        <div class="row align-items-center">
+        <div class="row align-items-center mt-3">
           <input
             type="text"
             class="user-input interface text-center m-1 col-10"
@@ -38,6 +38,16 @@
             v-model="user.last_name"
           />
           <label class="col-1">نام خانوادگی</label>
+        </div>
+
+        <div class="row align-items-center mt-3">
+          <input
+            type="text"
+            class="interface text-center user-input m-1 col-10"
+            v-model="new_password"
+            placeholder="رمز عبور جدید"
+          />
+          <label class="col-1">رمز جدید</label>
         </div>
 
         <div class="row align-items-center mt-3">
@@ -78,6 +88,7 @@ export default {
   data() {
     return {
       user: {},
+      new_password: null,
     };
   },
   mounted() {
