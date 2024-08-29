@@ -19,14 +19,20 @@
         id="navbarNav"
       >
         <ul class="navbar-nav">
-          <li class="nav-item">
+          <li class="nav-item" v-if="this.$is_logedin()">
             <router-link class="nav-link active br-lr" to="/dashboard">
               داشبرد
             </router-link>
           </li>
-          <li class="nav-item">
+
+          <li class="nav-item" v-if="this.$is_logedin()">
             <a class="nav-link active br-lr" href="/performance">تنظیمات</a>
           </li>
+
+          <li class="nav-item" v-if="!this.$is_logedin()">
+            <a class="nav-link active br-lr" href="/login">ورود / ثبت‌نام</a>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link active" href="/about">درباره ما</a>
           </li>
@@ -39,6 +45,9 @@
 <script>
 export default {
   name: "NavbarCmp",
+  data() {
+    return {};
+  },
 };
 </script>
 
