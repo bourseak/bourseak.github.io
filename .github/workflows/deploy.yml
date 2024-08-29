@@ -25,9 +25,8 @@ jobs:
       - name: Build the Vue 3 app
         run: npm run build
 
-      - name: Create a new branch
-        run: |
-          git checkout -b deploy
-          git push --set-upstream origin deploy
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: deploy
