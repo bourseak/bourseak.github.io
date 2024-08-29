@@ -77,6 +77,11 @@
 .disable-input {
   color: #b2babb;
 }
+
+.user-input:active,
+.user-input:focus {
+  outline: #5dade2 0.5px solid;
+}
 </style>
 
 <script>
