@@ -2,7 +2,7 @@
   <div>
     <div
       class="container row my-border col-10 col-xl-12 m-4 mt-5 p-1 w-color justify-content-center"
-      style="height: 800px"
+      style="min-height: 800px"
     >
       <div
         class="my-border m-4s w-color col-10 row justify-content-center tab row p-1"
@@ -22,6 +22,7 @@
           کاربری
         </button>
       </div>
+      <UserPerformance v-if="active_tab === 'user'" />
     </div>
   </div>
 </template>
@@ -53,7 +54,10 @@
 </style>
 
 <script>
+import UserPerformance from "@/components/UserPerformance.vue";
+
 export default {
+  components: { UserPerformance },
   data() {
     return {
       active_tab: "user",
