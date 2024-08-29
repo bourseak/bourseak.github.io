@@ -79,7 +79,7 @@ export default {
     },
   },
   mounted() {
-    if (!this.$is_logedin) {
+    if (!this.$is_logedin()) {
       Swal.fire("خظا", "شما باید اول وارد شوید!", "warning");
       this.$router.push("/login");
     }
