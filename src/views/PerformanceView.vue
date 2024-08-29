@@ -23,6 +23,7 @@
         </button>
       </div>
       <UserPerformance v-if="active_tab === 'user'" />
+      <WarningPerformance v-if="active_tab === 'warning'" />
     </div>
   </div>
 </template>
@@ -55,9 +56,10 @@
 
 <script>
 import UserPerformance from "@/components/UserPerformance.vue";
+import WarningPerformance from "@/components/WarningPerformance.vue";
 
 export default {
-  components: { UserPerformance },
+  components: { WarningPerformance, UserPerformance },
   data() {
     return {
       active_tab: "user",
