@@ -5,7 +5,7 @@
         <div class="row align-items-center">
           <input
             type="text"
-            class="user-input interface text-center m-1 col-10"
+            class="user-input interface text-center m-1 col-10 disable-input"
             disabled
             :value="user.phone"
           />
@@ -15,7 +15,7 @@
         <div class="row align-items-center">
           <input
             type="text"
-            class="user-input interface text-center m-1 col-10"
+            class="user-input interface text-center m-1 col-10 disable-input"
             disabled
             :value="user.email"
           />
@@ -62,6 +62,10 @@
   border-radius: 13px;
   background-color: #404040;
   height: 40px;
+}
+
+.disable-input {
+  color: #b2babb;
 }
 </style>
 
