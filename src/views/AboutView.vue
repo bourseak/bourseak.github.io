@@ -1,5 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about m-5 w-color" dir="rtl">
+    این سایت تحت ساختن است، پس اگر به هر اتفاقی وارد این سایت شدین مشکلات رو به
+    خام دستی این برنامه نویس ببخشید (:
   </div>
 </template>
