@@ -32,6 +32,11 @@ const routes = [
     name: "addwatch",
     component: () => import("../views/AddWatch.vue"),
   },
+  {
+    path: "/performance",
+    name: "performance",
+    component: () => import("../views/PerformanceView.vue"),
+  },
 ];
 
 const router = createRouter({
