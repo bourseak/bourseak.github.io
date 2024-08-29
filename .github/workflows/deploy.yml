@@ -25,14 +25,21 @@ jobs:
       - name: Build the Vue 3 app
         run: npm run build
 
-      - name: config git
-        run: git config --global user.email "m.mohamadshabane@gmail.com" && git config --global user.name "shabane"
+      - name: Clone target repository
+        run: |
+          git clone https://github.com/shabane/bourseak.github.io.git
+          cd bourseak.github.io
+          git config --global user.email "m.mohamadshabane@gmail.com"
+          git config --global user.name "shabane"
 
-      - name: git add & commit
-        run: git add ./docs && git commit -m "build!"
+      - name: Copy docs to target repository
+        run: |
+          cp -r ./docs/* bourseak.github.io/
+          cd bourseak.github.io.git
+          git add .
+          git commit -m "build!"
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: deploy
+      - name: Push changes to target repository
+        run: |
+          cd bourseak.github.io.git
+          git push --force https://shabane:${{ secrets.GITHUB_TOKEN }}@github.com/shabane/bourseak.github.io.git
