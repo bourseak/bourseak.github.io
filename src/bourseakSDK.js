@@ -3,6 +3,7 @@ class BourseakBase {
   constructor() {
     this.apiUrl = "http://127.0.0.1:8000/api";
     this.watchApiUrl = this.apiUrl + "/onwatch";
+    this.stockApiUrl = this.apiUrl + "/stock";
   }
 }
 
@@ -44,6 +45,23 @@ export class Watch extends BourseakBase {
       )
       .then((watch) => {
         return watch.data;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }
+}
+
+export class Stock extends BourseakBase {
+  constructor() {
+    super();
+  }
+
+  getStock(id) {
+    return axios
+      .get(this.stockApiUrl + `/${id}/`)
+      .then((stock) => {
+        return stock.data;
       })
       .catch((err) => {
         return err;
