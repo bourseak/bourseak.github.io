@@ -28,4 +28,25 @@ export class Watch extends BourseakBase {
         return err;
       });
   }
+
+  editWatch(id, title, cond, cond_variable, condition, stock_id) {
+    return axios
+      .patch(
+        this.watchApiUrl + `/${id}/`,
+        {
+          title: title,
+          cond: cond,
+          cond_variable: cond_variable,
+          condition: condition,
+          stock: stock_id,
+        },
+        this.config
+      )
+      .then((watch) => {
+        return watch.data;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }
 }
