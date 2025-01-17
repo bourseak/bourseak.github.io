@@ -312,9 +312,9 @@ export default {
             this.watch.condition,
             this.watch.stock
           )
-          .then((watchData) => {
-            console.log(watchData);
+          .then(() => {
             Swal.fire("", "سهام با موفقیت ویرایش شد.", "success");
+            this.$router.push("/dashboard");
           })
           .catch((err) => {
             console.log(err);
