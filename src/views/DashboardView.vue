@@ -75,10 +75,11 @@
         v-if="onwatch_list"
         class="row row-cols-1 row-cols-md-4 row-cols-lg-6 justify-content-center"
       >
-        <div
+        <router-link
           v-for="watch in onwatch_list"
           class="my-card p-3 w-color m-1 mt-3"
           :key="watch.id"
+          :to="'/watch/edit/' + watch.id"
         >
           <p>{{ watch.title }}</p>
           <hr />
@@ -96,7 +97,7 @@
           <hr />
           <p class="g-color" v-if="watch.enable">فعال</p>
           <p class="o-color" v-else>غیر فعال</p>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>

@@ -37,6 +37,11 @@ const routes = [
     name: "performance",
     component: () => import("../views/PerformanceView.vue"),
   },
+  {
+    path: "/watch/edit/:id",
+    name: "editwatch",
+    component: () => import("../views/EditWatch.vue"),
+  },
 ];
 
 const router = createRouter({
