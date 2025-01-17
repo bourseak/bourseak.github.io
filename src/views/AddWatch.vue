@@ -85,7 +85,7 @@
               class="interface my-input col-6 col-lg-3 txt-alg-cen number-to-text"
               placeholder="مقدار"
               dir="ltr"
-              v-model="watch.value"
+              v-model="watch.condition"
             />
           </div>
         </div>
@@ -113,7 +113,7 @@
           <p class="col-3">آخرین معامله</p>
           <button
             class="col-2 my-btn tsetmc-btn interface"
-            @click="watch.value = tsetmc_close_price_detail.pDrCotVal"
+            @click="watch.condition = tsetmc_close_price_detail.pDrCotVal"
           >
             {{ tsetmc_close_price_detail.pDrCotVal }}
           </button>
@@ -127,7 +127,7 @@
         <p class="col-3">قیمت پایانی</p>
         <button
           class="col-2 my-btn tsetmc-btn interface"
-          @click="watch.value = tsetmc_close_price_detail.pClosing"
+          @click="watch.condition = tsetmc_close_price_detail.pClosing"
         >
           {{ tsetmc_close_price_detail.pClosing }}
         </button>
@@ -140,7 +140,7 @@
         <p class="col-3">اولین قیمت</p>
         <button
           class="col-2 my-btn tsetmc-btn interface"
-          @click="watch.value = tsetmc_close_price_detail.priceFirst"
+          @click="watch.condition = tsetmc_close_price_detail.priceFirst"
         >
           {{ tsetmc_close_price_detail.priceFirst }}
         </button>
@@ -153,7 +153,7 @@
         <p class="col-3">قیمت دیروز</p>
         <button
           class="col-2 my-btn tsetmc-btn interface"
-          @click="watch.value = tsetmc_close_price_detail.priceYesterday"
+          @click="watch.condition = tsetmc_close_price_detail.priceYesterday"
         >
           {{ tsetmc_close_price_detail.priceYesterday }}
         </button>
@@ -166,7 +166,7 @@
         <p class="col-3">حجم معاملات</p>
         <button
           class="col-2 my-btn tsetmc-btn interface"
-          @click="watch.value = tsetmc_close_price_detail.qTotTran5J"
+          @click="watch.condition = tsetmc_close_price_detail.qTotTran5J"
         >
           {{ tsetmc_close_price_detail.qTotTran5J }}
         </button>
@@ -179,7 +179,7 @@
         <p class="col-3">ارزش معاملات</p>
         <button
           class="col-2 my-btn tsetmc-btn interface"
-          @click="watch.value = tsetmc_close_price_detail.qTotCap"
+          @click="watch.condition = tsetmc_close_price_detail.qTotCap"
         >
           {{ tsetmc_close_price_detail.qTotCap }}
         </button>
@@ -339,7 +339,7 @@ export default {
         Swal.fire("هشدار", "یک سهم انتخاب کنید!", "warning");
         return false;
       }
-      if (!this.watch.value) {
+      if (!this.watch.condition) {
         Swal.fire("هشدار", "مقداری برای این شرط انتخاب کنید!", "warning");
         return false;
       }
