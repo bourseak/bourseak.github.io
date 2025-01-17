@@ -302,21 +302,25 @@ export default {
     edit_watch() {
       if (this.check_inputs_not_empty()) {
         this.show_loading_new_watch = true;
-        axios
-          .post(`${this.$host}/api/onwatch/`, this.watch, this.$config)
-          .then(() => {
-            Swal.fire({
-              icon: "success",
-              title: "با موفقیت به واچ لیست اضافه شد",
-              showConfirmButton: false,
-              timer: 1000,
-            });
-            this.$router.push("/dashboard");
+        let watch = new Watch(this.$get_cookie("token"));
+        watch
+          .editWatch(
+            this.watchId,
+            this.watch.title,
+            this.watch.cond,
+            this.watch.cond_variable,
+            this.watch.condition,
+            this.watch.stock
+          )
+          .then((watchData) => {
+            console.log(watchData);
+            Swal.fire("", "سهام با موفقیت ویرایش شد.", "success");
           })
           .catch((err) => {
-            Swal.fire("خطلا", `${err}`, "error");
-            this.show_loading_new_watch = false;
+            console.log(err);
           });
+      } else {
+        Swal.fire("خطلا", "لطفا همه فیلد ها پر کنید.", "error");
       }
     },
 
