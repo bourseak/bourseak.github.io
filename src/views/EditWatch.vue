@@ -95,7 +95,7 @@
           style="height: 35px"
           @click="edit_watch"
         >
-          <p>افزودن به واچ لیست</p>
+          <p>ویرایش</p>
           <LoadingTag class="mt-3" v-if="show_loading_new_watch" />
         </button>
       </div>
@@ -245,7 +245,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import LoadingTag from "@/components/LoadingTag.vue";
-import { Watch } from "@/bourseakSDK";
+import { Watch, Stock } from "@/bourseakSDK";
 
 export default {
   components: { LoadingTag },
@@ -364,6 +364,16 @@ export default {
           this.watch.condition = watchData.condition;
           this.watch.cond_variable = watchData.cond_variable;
           this.watch.cond = watchData.cond;
+          this.watch.stock = watchData.stock;
+          let stock = new Stock();
+          stock
+            .getStock(watchData.stock)
+            .then((stockData) => {
+              this.search_text = stockData.symbol;
+            })
+            .catch((err) => {
+              Swal.fire("خطا در دریافت اطلاعات", `${err.message}`, "error");
+            });
         })
         .catch((err) => {
           Swal.fire("خطلا", `${err}`, "error");
