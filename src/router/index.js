@@ -38,9 +38,10 @@ const routes = [
     component: () => import("../views/PerformanceView.vue"),
   },
   {
-    path: "/watch/edit/:id",
+    path: "/watch/edit/:watchId",
     name: "editwatch",
     component: () => import("../views/EditWatch.vue"),
+    props: true,
   },
 ];
 
