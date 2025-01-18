@@ -30,7 +30,7 @@ export class Watch extends BourseakBase {
       });
   }
 
-  editWatch(id, title, cond, cond_variable, condition, stock_id) {
+  editWatch(id, title, cond, cond_variable, condition, stock_id, enable) {
     return axios
       .patch(
         this.watchApiUrl + `/${id}/`,
@@ -40,6 +40,7 @@ export class Watch extends BourseakBase {
           cond_variable: cond_variable,
           condition: condition,
           stock: stock_id,
+          enable: enable,
         },
         this.config
       )
