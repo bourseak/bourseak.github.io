@@ -98,6 +98,23 @@
           <p>ویرایش</p>
           <LoadingTag class="mt-3" v-if="show_loading_new_watch" />
         </button>
+        <div class="justify-content-center mt-5 p-color" v-if="watch.title">
+          <button
+            class="btn btn-outline-secondary"
+            v-if="!watch.enable"
+            @click="enable_disable_watch()"
+          >
+            غیر فعال
+          </button>
+
+          <button
+            class="btn btn-outline-light"
+            v-if="watch.enable"
+            @click="enable_disable_watch()"
+          >
+            فعال
+          </button>
+        </div>
       </div>
     </div>
 
@@ -310,7 +327,8 @@ export default {
             this.watch.cond,
             this.watch.cond_variable,
             this.watch.condition,
-            this.watch.stock
+            this.watch.stock,
+            this.watch.enable
           )
           .then(() => {
             Swal.fire("", "سهام با موفقیت ویرایش شد.", "success");
@@ -360,11 +378,12 @@ export default {
       watch
         .getWatch(id)
         .then((watchData) => {
-          this.watch.title = watchData.title;
-          this.watch.condition = watchData.condition;
-          this.watch.cond_variable = watchData.cond_variable;
-          this.watch.cond = watchData.cond;
-          this.watch.stock = watchData.stock;
+          // this.watch.title = watchData.title;
+          // this.watch.condition = watchData.condition;
+          // this.watch.cond_variable = watchData.cond_variable;
+          // this.watch.cond = watchData.cond;
+          // this.watch.stock = watchData.stock;
+          this.watch = watchData;
           let stock = new Stock();
           stock
             .getStock(watchData.stock)
@@ -378,6 +397,10 @@ export default {
         .catch((err) => {
           Swal.fire("خطلا", `${err}`, "error");
         });
+    },
+
+    enable_disable_watch() {
+      this.watch.enable = !this.watch.enable;
     },
   },
 };
