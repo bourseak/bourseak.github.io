@@ -4,6 +4,7 @@ class BourseakBase {
     this.apiUrl = "http://127.0.0.1:8000/api";
     this.watchApiUrl = this.apiUrl + "/onwatch";
     this.stockApiUrl = this.apiUrl + "/stock";
+    this.userApiUrl = this.apiUrl + "/user";
   }
 }
 
@@ -63,6 +64,30 @@ export class Stock extends BourseakBase {
       .get(this.stockApiUrl + `/${id}/`)
       .then((stock) => {
         return stock.data;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }
+}
+
+export class User extends BourseakBase {
+  constructor(token) {
+    super();
+    this.token = token;
+    this.headers = {
+      Authorization: `Bearer ${token}`,
+    };
+    this.config = {
+      headers: this.headers,
+    };
+  }
+
+  getUser() {
+    return axios
+      .get(this.userApiUrl + "/", this.config)
+      .then((user) => {
+        return user.data;
       })
       .catch((err) => {
         return err;

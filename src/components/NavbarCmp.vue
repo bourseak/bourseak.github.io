@@ -34,7 +34,11 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" href="/about">درباره ما</a>
+            <a class="nav-link active br-lr" href="/about">درباره ما</a>
+          </li>
+
+          <li class="nav-item" v-if="this.user">
+            <p class="nav-link active" href="/about">اعتبار: {{ this.user.credit }}</p>
           </li>
         </ul>
       </div>
@@ -43,10 +47,32 @@
 </template>
 
 <script>
+import { User } from "@/bourseakSDK";
 export default {
   name: "NavbarCmp",
   data() {
-    return {};
+    return {
+      user: null,
+    };
+  },
+  methods: {
+    get_user() {
+      let user = new User(this.$get_cookie("token"));
+      user
+        .getUser()
+        .then((nuser) => {
+          this.user = nuser;
+        })
+        .catch((err) => {
+          //TODO: fucking do some fucking thing for this shit
+          console.log(err);
+        });
+    },
+  },
+  mounted() {
+    if(this.$is_logedin()) {
+      this.get_user();
+    }
   },
 };
 </script>
