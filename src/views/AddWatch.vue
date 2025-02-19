@@ -256,7 +256,6 @@ export default {
       watch: {
         cond_variable: "last",
         cond: "gr",
-        enable: true,
       },
       tsetmc_close_price_detail: null,
       show_tsetmc_loading: false,
