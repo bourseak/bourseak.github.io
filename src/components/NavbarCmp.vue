@@ -43,7 +43,7 @@
 
           <li class="nav-item" v-if="this.user">
             <p class="nav-link active" href="/about">
-              اعتبار: {{ this.user.credit }}
+              پکیج: {{ this.user.package }}
             </p>
           </li>
         </ul>
