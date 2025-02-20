@@ -310,7 +310,7 @@ export default {
             this.$router.push("/dashboard");
           })
           .catch((err) => {
-            Swal.fire("خطلا", `${err}`, "error");
+            Swal.fire("خطلا", `${err.response.data.msg}`, "error");
             this.show_loading_new_watch = false;
           });
       }
