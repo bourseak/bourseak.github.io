@@ -21,12 +21,14 @@
         <ul class="navbar-nav">
           <li class="nav-item" v-if="this.$is_logedin()">
             <router-link class="nav-link active br-lr" to="/dashboard">
-              داشبرد
+              داشبورد
             </router-link>
           </li>
 
           <li class="nav-item" v-if="this.$is_logedin()">
-            <a class="nav-link active br-lr" href="/performance">تنظیمات</a>
+            <router-link class="nav-link active br-lr" to="/performance"
+              >تنظیمات</router-link
+            >
           </li>
 
           <li class="nav-item" v-if="!this.$is_logedin()">
@@ -34,11 +36,15 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active br-lr" href="/about">درباره ما</a>
+            <router-link class="nav-link active br-lr" to="/about"
+              >درباره ما</router-link
+            >
           </li>
 
           <li class="nav-item" v-if="this.user">
-            <p class="nav-link active" href="/about">اعتبار: {{ this.user.credit }}</p>
+            <p class="nav-link active" href="/about">
+              اعتبار: {{ this.user.credit }}
+            </p>
           </li>
         </ul>
       </div>
@@ -70,7 +76,7 @@ export default {
     },
   },
   mounted() {
-    if(this.$is_logedin()) {
+    if (this.$is_logedin()) {
       this.get_user();
     }
   },
