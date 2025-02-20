@@ -1,20 +1,20 @@
 <template>
   <div class="row">
     <div class="my-border col-10 col-xl-12 m-4 mt-5 row p-1">
-      <router-link to="/watch/add" class="my-btn interface m-1 btn-bg">
+      <router-link to="/watch/add" class="my-btn interface m-1 btn-bg col-2">
         <span class="icono-plus"></span>
       </router-link>
 
-      <button class="my-btn interface m-1 btn-bg" @click="refresh">
+      <button class="my-btn interface m-1 btn-bg col-2" @click="refresh">
         <span class="icono-sync"></span>
       </button>
 
-      <button class="my-btn interface m-1 btn-bg" @click="search_btn">
+      <button class="my-btn interface m-1 btn-bg col-2" @click="search_btn">
         <span class="icono-search"></span>
       </button>
 
       <button
-        class="my-btn interface m-1 btn-bg"
+        class="my-btn interface m-1 btn-bg col-2"
         @click="
           show_filters = !show_filters;
           show_search_bar = true;
@@ -25,7 +25,7 @@
       </button>
 
       <div
-        class="col-2 input-bg row m-1"
+        class="col-2 input-bg row m-1 col-2"
         style="align-content: center"
         v-if="show_filters"
       >
@@ -132,7 +132,7 @@
 
 .btn-bg {
   background-color: #404040;
-  width: 5%;
+  /*width: auto%;*/
   border: none;
   color: #1abc9c;
   border-radius: 13px;
