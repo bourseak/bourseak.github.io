@@ -52,6 +52,17 @@ export class Watch extends BourseakBase {
         return err;
       });
   }
+
+  deleteWatch(id) {
+    return axios
+      .delete(this.watchApiUrl + `/${id}/`, this.config)
+      .then((watch) => {
+        return watch;
+      })
+      .then((err) => {
+        return err;
+      });
+  }
 }
 
 export class Stock extends BourseakBase {
