@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="container my-border col-10 col-xl-12 m-4 mt-5 p-1" dir="rtl">
+      <div class="row m-3">
+        <BackTag class="col-1" back-to="/dashboard" />
+      </div>
       <div class="mb-5">
         <div class="row justify-content-center mt-5">
           <div class="">
@@ -245,9 +248,10 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import LoadingTag from "@/components/LoadingTag.vue";
+import BackTag from "@/components/BackTag.vue";
 
 export default {
-  components: { LoadingTag },
+  components: { LoadingTag, BackTag },
   data() {
     return {
       stocks: null,
