@@ -98,6 +98,7 @@
           <p>ویرایش</p>
           <LoadingTag class="mt-3" v-if="show_loading_new_watch" />
         </button>
+
         <div class="justify-content-center mt-5 p-color" v-if="watch.title">
           <button
             class="btn btn-outline-secondary"
@@ -114,6 +115,8 @@
           >
             فعال
           </button>
+
+          <button class="btn m-1 btn-outline-danger" v-if="watch">حذف</button>
         </div>
       </div>
     </div>
