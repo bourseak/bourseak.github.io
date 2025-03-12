@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container my-border col-10 col-xl-12 m-4 mt-5 p-1" dir="rtl">
-      <LoadingTag v-if="!watch.id" />
+      <LoadingTag v-if="!watch.id || show_loading_del_watch" />
       <div class="mb-5">
         <div class="row justify-content-center mt-5">
           <div class="">
@@ -117,7 +117,13 @@
             فعال
           </button>
 
-          <button class="btn m-1 btn-outline-danger" v-if="watch">حذف</button>
+          <button
+            class="btn m-1 btn-outline-danger"
+            v-if="watch"
+            @click="delete_watch()"
+          >
+            حذف
+          </button>
         </div>
       </div>
     </div>
@@ -285,6 +291,7 @@ export default {
       tsetmc_close_price_detail: null,
       show_tsetmc_loading: false,
       show_loading_new_watch: false,
+      show_loading_del_watch: false,
     };
   },
   mounted() {
@@ -405,6 +412,30 @@ export default {
 
     enable_disable_watch() {
       this.watch.enable = !this.watch.enable;
+    },
+
+    delete_watch() {
+      Swal.fire({
+        title: "آیا مطمئن هستید می‌خواهید از واچ لیست حذف کنید؟",
+        confirmButtonText: "بله",
+        showDenyButton: true,
+        denyButtonText: "لغو",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.show_loading_del_watch = true;
+          let watch = new Watch(this.$get_cookie("token"));
+          watch
+            .deleteWatch(this.watch.id)
+            .then(() => {
+              Swal.fire("حذف شد!", "", "warning");
+              this.$router.push("/dashboard");
+            })
+            .catch((err) => {
+              Swal.fire("خطا", err.message, "error");
+              this.show_loading_del_watch = false;
+            });
+        }
+      });
     },
   },
 };
