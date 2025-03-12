@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="container my-border col-10 col-xl-12 m-4 mt-5 p-1" dir="rtl">
-      <LoadingTag v-if="!watch.id || show_loading_del_watch" />
+      <div class="row m-3">
+        <BackTag class="col-1" back-to="/dashboard" />
+        <LoadingTag v-if="!watch.id || show_loading_del_watch" />
+      </div>
       <div class="mb-5">
         <div class="row justify-content-center mt-5">
           <div class="">
@@ -272,10 +275,11 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import LoadingTag from "@/components/LoadingTag.vue";
+import BackTag from "@/components/BackTag.vue";
 import { Watch, Stock } from "@/bourseakSDK";
 
 export default {
-  components: { LoadingTag },
+  components: { LoadingTag, BackTag },
   props: {
     watchId: String,
   },
