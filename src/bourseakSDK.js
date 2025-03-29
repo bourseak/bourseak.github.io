@@ -1,7 +1,7 @@
 import axios from "axios";
 class BourseakBase {
   constructor() {
-    this.apiUrl = "http://127.0.0.1:8000/api";
+    this.apiUrl = "https://bourseak.liara.run/api";
     this.watchApiUrl = this.apiUrl + "/onwatch";
     this.stockApiUrl = this.apiUrl + "/stock";
     this.userApiUrl = this.apiUrl + "/user";
@@ -102,6 +102,23 @@ export class User extends BourseakBase {
       })
       .catch((err) => {
         return err;
+      });
+  }
+}
+
+export class TSETMC {
+  constructor(id) {
+    this.id = id;
+  }
+
+  getMonthlyVolume() {
+    return axios
+      .get(`https://cdn.tsetmc.com/api/Instrument/GetInstrumentInfo/${this.id}`)
+      .then((data) => {
+        return data.data["instrumentInfo"]["qTotTran5JAvg"];
+      })
+      .catch((err) => {
+        return err.message;
       });
   }
 }
