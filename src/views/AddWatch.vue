@@ -68,6 +68,9 @@
               <option class="txt-alg-cen" value="count">تعداد</option>
               <option class="txt-alg-cen" value="volume">حجم</option>
               <option class="txt-alg-cen" value="value">ارزش</option>
+              <option class="txt-alg-cen" value="m_volume">
+                میانگین حجم ماهانه
+              </option>
             </select>
           </div>
         </div>
@@ -78,6 +81,22 @@
               <option class="txt-alg-cen" value="gr">بزرگ‌تر مساوی</option>
               <option class="txt-alg-cen" value="lt">کوچک‌تر مساوی</option>
             </select>
+          </div>
+        </div>
+
+        <div
+          class="row justify-content-center mt-5"
+          v-if="watch.cond_variable == 'm_volume'"
+        >
+          <div class="">
+            <button
+              type="button"
+              class="col-3 col-lg-3 my-btn my-border p-color darker_bg"
+              dir="ltr"
+              @click="multiplexr()"
+            >
+              x {{ multipled_by }}
+            </button>
           </div>
         </div>
 
@@ -257,6 +276,7 @@ export default {
       stocks: null,
       searched_stocks: null,
       search_text: null,
+      multipled_by: 2,
       watch: {
         cond_variable: "last",
         cond: "gr",
@@ -349,6 +369,11 @@ export default {
         return false;
       }
       return true;
+    },
+
+    multiplexr() {
+      this.watch.condition = this.watch.condition * this.multipled_by;
+      this.multipled_by += 1;
     },
   },
 };
