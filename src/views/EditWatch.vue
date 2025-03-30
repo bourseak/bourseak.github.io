@@ -69,6 +69,9 @@
               <option class="txt-alg-cen" value="count">تعداد</option>
               <option class="txt-alg-cen" value="volume">حجم</option>
               <option class="txt-alg-cen" value="value">ارزش</option>
+              <option class="txt-alg-cen" value="m_volume">
+                میانگین حجم ماهانه
+              </option>
             </select>
           </div>
         </div>
