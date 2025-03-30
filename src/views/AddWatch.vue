@@ -268,6 +268,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import LoadingTag from "@/components/LoadingTag.vue";
 import BackTag from "@/components/BackTag.vue";
+import { TSETMC } from "@/bourseakSDK";
 
 export default {
   components: { LoadingTag, BackTag },
@@ -285,6 +286,7 @@ export default {
       tsetmc_close_price_detail: null,
       show_tsetmc_loading: false,
       show_loading_new_watch: false,
+      avg_monthly: 0,
     };
   },
   mounted() {
@@ -342,6 +344,16 @@ export default {
 
     get_tsetmc_data(stock) {
       this.show_tsetmc_loading = true;
+      let stk = new TSETMC(stock.symbol_id);
+      stk
+        .getMonthlyVolume()
+        .then((avg) => {
+          this.avg_monthly = avg;
+        })
+        .catch((err) => {
+          Swal.fire("خطا", `${err}`, "error");
+        });
+
       axios
         .get(`${this.$tsetmc_close}/${stock.symbol_id}/`)
         .then((data) => {
@@ -372,7 +384,7 @@ export default {
     },
 
     multiplexr() {
-      this.watch.condition = this.watch.condition * this.multipled_by;
+      this.watch.condition = this.avg_monthly * this.multipled_by;
       this.multipled_by += 1;
     },
   },
