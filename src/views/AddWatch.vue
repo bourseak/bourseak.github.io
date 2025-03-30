@@ -209,6 +209,16 @@
       <div class="row justify-content-center m-3">
         <hr class="col-6" />
       </div>
+
+      <div class="row justify-content-center" v-if="avg_monthly">
+        <p class="col-3">میانگین حجم ماهانه</p>
+        <button
+          class="col-2 my-btn tsetmc-btn interface"
+          @click="watch.condition = avg_monthly"
+        >
+          {{ avg_monthly }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -286,7 +296,7 @@ export default {
       tsetmc_close_price_detail: null,
       show_tsetmc_loading: false,
       show_loading_new_watch: false,
-      avg_monthly: 0,
+      avg_monthly: null,
     };
   },
   mounted() {
