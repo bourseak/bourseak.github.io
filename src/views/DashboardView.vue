@@ -103,6 +103,7 @@
           <p v-if="watch.cond_variable === 'count'">تعداد</p>
           <p v-if="watch.cond_variable === 'volume'">حجم</p>
           <p v-if="watch.cond_variable === 'value'">ارزش</p>
+          <p v-if="watch.cond_variable === 'm_volume'">میانگین حجم ماهانه</p>
           <hr />
           <p class="g-color" v-if="watch.enable">فعال</p>
           <p class="o-color" v-else>غیر فعال</p>
