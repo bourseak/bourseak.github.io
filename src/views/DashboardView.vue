@@ -34,7 +34,7 @@
       <!--      </button>-->
 
       <div
-        class="col-2 input-bg row m-1 col-1 col-md-1"
+        class="col-3 input-bg row m-1 col-md-1"
         style="align-content: center"
       >
         <select
