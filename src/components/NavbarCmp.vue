@@ -42,9 +42,9 @@
           </li>
 
           <li class="nav-item" v-if="this.user">
-            <p class="nav-link active" href="/about">
+            <router-link class="nav-link active" to="/">
               پکیج: {{ this.user.package }}
-            </p>
+            </router-link>
           </li>
         </ul>
       </div>
