@@ -3,6 +3,7 @@
     <div class="container my-border col-10 col-xl-12 m-4 mt-5 p-1" dir="rtl">
       <div class="row m-3">
         <BackTag class="col-1" back-to="/dashboard" />
+        <LoadingTag v-if="!this.stocks" />
       </div>
       <div class="mb-5">
         <div class="row justify-content-center mt-5">
