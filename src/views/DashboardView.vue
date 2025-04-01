@@ -22,21 +22,20 @@
         <span class="icono-search"></span>
       </button>
 
-      <button
-        class="my-btn interface m-1 btn-bg col-2 col-md-1"
-        @click="
-          show_filters = !show_filters;
-          show_search_bar = true;
-          search_btn();
-        "
-      >
-        <span class="icono-sliders"></span>
-      </button>
+      <!--      <button-->
+      <!--        class="my-btn interface m-1 btn-bg col-2 col-md-1"-->
+      <!--        @click="-->
+      <!--          show_filters = !show_filters;-->
+      <!--          show_search_bar = true;-->
+      <!--          search_btn();-->
+      <!--        "-->
+      <!--      >-->
+      <!--        <span class="icono-sliders"></span>-->
+      <!--      </button>-->
 
       <div
         class="col-2 input-bg row m-1 col-1 col-md-1"
         style="align-content: center"
-        v-if="show_filters"
       >
         <select
           class="form-select-sm col m-1 my-select"
@@ -47,6 +46,7 @@
           <option value="all" selected class="my-option">همه</option>
           <option value="last" class="my-option">آخرین</option>
           <option value="close" class="my-option">بسته شدن</option>
+          <option value="m_volume" class="my-option">میانگین حجم ماهانه</option>
           <option value="open" class="my-option">باز شدن</option>
           <option value="yesterday" class="my-option">دیروز</option>
           <option value="high" class="my-option">بیشترین</option>
