@@ -54,6 +54,16 @@
     color: #dc7633;
 }
 
+.o-color-hover {
+    border-color: #dc7633;
+    background-color: #dc7633;
+}
+
+.o-color-hover:hover {
+    background-color: #dc7633;
+}
+
+
 input.number-to-text::-webkit-outer-spin-button,
 input.number-to-text::-webkit-inner-spin-button {
     -webkit-appearance: none;
