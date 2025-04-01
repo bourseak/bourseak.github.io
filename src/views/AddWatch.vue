@@ -91,13 +91,30 @@
           <div class="">
             <button
               type="button"
-              class="col-3 col-lg-3 my-btn my-border p-color darker_bg"
+              class="col-2 col-lg-1 my-btn my-border p-color darker_bg"
               dir="ltr"
-              @click="multiplexr()"
+              @click="mul_adder"
             >
-              x {{ multipled_by }}
+              + 1
+            </button>
+
+            <button
+              type="button"
+              class="col-2 col-lg-1 my-btn my-border o-color darker_bg o-color-hover m-1"
+              dir="ltr"
+              @click="mul_miner"
+            >
+              - 1
             </button>
           </div>
+          <button
+            type="button"
+            class="my-btn col-4 col-lg-2 my-border b-color darker_bg m-1"
+            dir="ltr"
+            @click="multiplexr()"
+          >
+            x {{ multipled_by }}
+          </button>
         </div>
 
         <div class="row justify-content-center mt-5">
@@ -134,7 +151,7 @@
         <div class="row justify-content-center">
           <p class="col-3">آخرین معامله</p>
           <button
-            class="col-2 my-btn tsetmc-btn interface"
+            class="col-6 my-btn tsetmc-btn interface col-md-2"
             @click="watch.condition = tsetmc_close_price_detail.pDrCotVal"
           >
             {{ tsetmc_close_price_detail.pDrCotVal }}
@@ -148,7 +165,7 @@
       <div class="row justify-content-center">
         <p class="col-3">قیمت پایانی</p>
         <button
-          class="col-2 my-btn tsetmc-btn interface"
+          class="col-6 my-btn tsetmc-btn interface col-md-2"
           @click="watch.condition = tsetmc_close_price_detail.pClosing"
         >
           {{ tsetmc_close_price_detail.pClosing }}
@@ -161,7 +178,7 @@
       <div class="row justify-content-center">
         <p class="col-3">اولین قیمت</p>
         <button
-          class="col-2 my-btn tsetmc-btn interface"
+          class="col-6 my-btn tsetmc-btn interface col-md-2"
           @click="watch.condition = tsetmc_close_price_detail.priceFirst"
         >
           {{ tsetmc_close_price_detail.priceFirst }}
@@ -174,7 +191,7 @@
       <div class="row justify-content-center">
         <p class="col-3">قیمت دیروز</p>
         <button
-          class="col-2 my-btn tsetmc-btn interface"
+          class="col-6 my-btn tsetmc-btn interface col-md-2"
           @click="watch.condition = tsetmc_close_price_detail.priceYesterday"
         >
           {{ tsetmc_close_price_detail.priceYesterday }}
@@ -187,7 +204,7 @@
       <div class="row justify-content-center">
         <p class="col-3">حجم معاملات</p>
         <button
-          class="col-2 my-btn tsetmc-btn interface"
+          class="col-6 my-btn tsetmc-btn interface col-md-2"
           @click="watch.condition = tsetmc_close_price_detail.qTotTran5J"
         >
           {{ tsetmc_close_price_detail.qTotTran5J }}
@@ -200,7 +217,7 @@
       <div class="row justify-content-center">
         <p class="col-3">ارزش معاملات</p>
         <button
-          class="col-2 my-btn tsetmc-btn interface"
+          class="col-6 my-btn tsetmc-btn interface col-md-2"
           @click="watch.condition = tsetmc_close_price_detail.qTotCap"
         >
           {{ tsetmc_close_price_detail.qTotCap }}
@@ -213,7 +230,7 @@
       <div class="row justify-content-center" v-if="avg_monthly">
         <p class="col-3">میانگین حجم ماهانه</p>
         <button
-          class="col-2 my-btn tsetmc-btn interface"
+          class="col-6 my-btn tsetmc-btn interface col-md-2"
           @click="watch.condition = avg_monthly"
         >
           {{ avg_monthly }}
@@ -395,6 +412,15 @@ export default {
 
     multiplexr() {
       this.watch.condition = this.avg_monthly * this.multipled_by;
+    },
+
+    mul_miner() {
+      if (this.multipled_by > 2) {
+        this.multipled_by -= 1;
+      }
+    },
+
+    mul_adder() {
       this.multipled_by += 1;
     },
   },
