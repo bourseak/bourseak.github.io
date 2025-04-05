@@ -2,9 +2,11 @@ import axios from "axios";
 class BourseakBase {
   constructor() {
     this.apiUrl = "https://bourseak.liara.run/api";
+    // this.apiUrl = "http://127.0.0.1:8000/api";
     this.watchApiUrl = this.apiUrl + "/onwatch";
     this.stockApiUrl = this.apiUrl + "/stock";
     this.userApiUrl = this.apiUrl + "/user";
+    this.priceApiUrl = this.apiUrl + "/price";
   }
 }
 
@@ -75,6 +77,17 @@ export class Stock extends BourseakBase {
       .get(this.stockApiUrl + `/${id}/`)
       .then((stock) => {
         return stock.data;
+      })
+      .catch((err) => {
+        return err;
+      });
+  }
+
+  getStockPrice(id) {
+    return axios
+      .get(this.priceApiUrl + `/${id}/`)
+      .then((price) => {
+        return price.data;
       })
       .catch((err) => {
         return err;
