@@ -77,3 +77,10 @@ input[type=number].number-to-text {
 .darker_bg {
     background: #303030;
 }
+
+@font-face {
+    font-family: 'Vazir';
+    src: url('@/assets/ttf/Vazirmatn-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
