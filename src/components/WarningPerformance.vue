@@ -5,7 +5,7 @@
         class="my-btn interface my-border col-xl-2 col-10 p-2 text-center"
         @click="connect_tel"
       >
-        اتضال به تلگرام
+        اتصال به تلگرام
       </button>
     </div>
   </div>
