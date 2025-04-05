@@ -102,7 +102,7 @@
           style="height: 35px"
           @click="edit_watch"
         >
-          <p>ویرایش</p>
+          <p>ثبت ویرایش</p>
           <LoadingTag class="mt-3" v-if="show_loading_new_watch" />
         </button>
 
