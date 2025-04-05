@@ -89,6 +89,7 @@
           class="my-card p-3 w-color m-1 mt-3"
           :key="watch.id"
           :to="'/watch/edit/' + watch.id"
+          style="text-decoration: none"
         >
           <p>{{ watch.title }}</p>
           <hr />
