@@ -25,6 +25,7 @@
               placeholder="جست و جوی نماد"
               v-model="search_text"
               @input="search"
+              :disabled="!this.stocks"
             />
           </div>
         </div>
@@ -153,9 +154,9 @@
           <p class="col-3">آخرین معامله</p>
           <button
             class="col-6 my-btn tsetmc-btn interface col-md-2"
-            @click="watch.condition = tsetmc_close_price_detail.pDrCotVal"
+            @click="watch.condition = tsetmc_close_price_detail.last"
           >
-            {{ tsetmc_close_price_detail.pDrCotVal }}
+            {{ tsetmc_close_price_detail.last }}
           </button>
         </div>
         <div class="row justify-content-center m-3">
@@ -167,9 +168,9 @@
         <p class="col-3">قیمت پایانی</p>
         <button
           class="col-6 my-btn tsetmc-btn interface col-md-2"
-          @click="watch.condition = tsetmc_close_price_detail.pClosing"
+          @click="watch.condition = tsetmc_close_price_detail.close"
         >
-          {{ tsetmc_close_price_detail.pClosing }}
+          {{ tsetmc_close_price_detail.close }}
         </button>
       </div>
       <div class="row justify-content-center m-3">
@@ -180,9 +181,9 @@
         <p class="col-3">اولین قیمت</p>
         <button
           class="col-6 my-btn tsetmc-btn interface col-md-2"
-          @click="watch.condition = tsetmc_close_price_detail.priceFirst"
+          @click="watch.condition = tsetmc_close_price_detail.open"
         >
-          {{ tsetmc_close_price_detail.priceFirst }}
+          {{ tsetmc_close_price_detail.open }}
         </button>
       </div>
       <div class="row justify-content-center m-3">
@@ -193,9 +194,9 @@
         <p class="col-3">قیمت دیروز</p>
         <button
           class="col-6 my-btn tsetmc-btn interface col-md-2"
-          @click="watch.condition = tsetmc_close_price_detail.priceYesterday"
+          @click="watch.condition = tsetmc_close_price_detail.yesterday"
         >
-          {{ tsetmc_close_price_detail.priceYesterday }}
+          {{ tsetmc_close_price_detail.yesterday }}
         </button>
       </div>
       <div class="row justify-content-center m-3">
@@ -206,9 +207,9 @@
         <p class="col-3">حجم معاملات</p>
         <button
           class="col-6 my-btn tsetmc-btn interface col-md-2"
-          @click="watch.condition = tsetmc_close_price_detail.qTotTran5J"
+          @click="watch.condition = tsetmc_close_price_detail.volume"
         >
-          {{ tsetmc_close_price_detail.qTotTran5J }}
+          {{ tsetmc_close_price_detail.volume }}
         </button>
       </div>
       <div class="row justify-content-center m-3">
@@ -219,22 +220,22 @@
         <p class="col-3">ارزش معاملات</p>
         <button
           class="col-6 my-btn tsetmc-btn interface col-md-2"
-          @click="watch.condition = tsetmc_close_price_detail.qTotCap"
+          @click="watch.condition = tsetmc_close_price_detail.value"
         >
-          {{ tsetmc_close_price_detail.qTotCap }}
+          {{ tsetmc_close_price_detail.value }}
         </button>
       </div>
       <div class="row justify-content-center m-3">
         <hr class="col-6" />
       </div>
 
-      <div class="row justify-content-center" v-if="avg_monthly">
+      <div class="row justify-content-center">
         <p class="col-3">میانگین حجم ماهانه</p>
         <button
           class="col-6 my-btn tsetmc-btn interface col-md-2"
-          @click="watch.condition = avg_monthly"
+          @click="watch.condition = tsetmc_close_price_detail.m_volume"
         >
-          {{ avg_monthly }}
+          {{ tsetmc_close_price_detail.m_volume }}
         </button>
       </div>
     </div>
@@ -296,7 +297,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import LoadingTag from "@/components/LoadingTag.vue";
 import BackTag from "@/components/BackTag.vue";
-import { TSETMC } from "@/bourseakSDK";
+import { TSETMC, Stock } from "@/bourseakSDK";
 
 export default {
   components: { LoadingTag, BackTag },
@@ -315,6 +316,7 @@ export default {
       show_tsetmc_loading: false,
       show_loading_new_watch: false,
       avg_monthly: null,
+      stock_price: null,
     };
   },
   mounted() {
@@ -346,7 +348,23 @@ export default {
       document
         .getElementById(stock.id.toString())
         .classList.add("selected-btn");
-      this.get_tsetmc_data(stock);
+      // this.get_tsetmc_data(stock);
+      this.show_tsetmc_loading = true;
+      let st = new Stock();
+      st.getStockPrice(stock.price)
+        .then((price) => {
+          this.tsetmc_close_price_detail = price;
+          this.avg_monthly = this.tsetmc_close_price_detail.m_volume;
+          this.show_tsetmc_loading = false;
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "اطلاعات قیمت ها دریافت نشد، صفحه را رفرش کنید",
+            text: err.message,
+          });
+          this.show_tsetmc_loading = false;
+        });
     },
 
     add_watch() {
